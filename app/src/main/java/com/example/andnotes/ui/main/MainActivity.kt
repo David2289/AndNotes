@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.andnotes.R
 import com.example.andnotes.databinding.MainActivityBinding
+import com.example.andnotes.ui.data.DataFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
         setSupportActionBar(binding.toolbarContent.toolbar)
 
-        val fragmentHost = NavHostFragment.create(R.navigation.home)
-        loadFragment(fragmentHost)
+        loadFragment(NavHostFragment.create(R.navigation.home))
 
         bottomNavConfig()
 
@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
     private fun bottomNavConfig() {
         binding.bottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item_home -> Log.i("BOTTOMNAV", "home button pressed")
+                R.id.item_home -> loadFragment(NavHostFragment.create(R.navigation.home))
                 R.id.item_list -> Log.i("BOTTOMNAV", "list button pressed")
-                R.id.item_settings -> Log.i("BOTTOMNAV", "settings button pressed")
+                R.id.item_data -> loadFragment(DataFragment())
             }
             true
         }

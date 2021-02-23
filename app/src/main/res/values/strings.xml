@@ -9,6 +9,16 @@
     <string name="home_button">About</string>
 
     <string name="about_title">About</string>
-    <string name="about_description">This is a project for practice the newest technologies about Android development making use of Android Jetpack: Navigation Component, View Model, Data Binding, LifeCycle Components, as well ass Third party libraries: Kotlin, Dagger 2, Retrofit, RxJava.</string>
+    <string name="about_description">This is a project for practice the newest technologies about Android development
+        making use of Android Jetpack: Navigation Component, View Model, Data Binding, LifeCycle Components, as well ass
+        Third party libraries: Kotlin, Dagger 2, Retrofit, RxJava.</string>
+
+    <string name="data_name">David Pasache Lavado</string>
+    <string name="data_email">david.2289@icloud.com</string>
+    <string name="data_social_network">Social Network</string>
+    <string name="data_social_network_linkedin_title">Linkedin</string>
+    <string name="data_social_network_linkedin_link">https://linkedin.com/in/david-pasache-8b0928142</string>
+    <string name="data_social_network_github_title">Github</string>
+    <string name="data_social_network_github_link">https://github.com/David2289</string>
 
 </resources>

@@ -27,7 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/ic_star"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/button"
             style="@style/Button.Outlined.Primary"
             app:layout_constraintStart_toStartOf="parent"
