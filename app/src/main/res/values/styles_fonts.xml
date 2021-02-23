@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="Font">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+    </style>
+
+
+    <!-- region ****** FONTS REGULAR ****** -->
+
+    <style name="Font.Regular" parent="Font">
+        <item name="android:fontFamily">@font/sailec_regular</item>
+    </style>
+
+    <!-- region ****** FONT REGULAR TITLE (18sp) ****** -->
+
+    <style name="Font.Regular.Title" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_title</item>
+    </style>
+
+    <style name="Font.Regular.Title.Primary" parent="Font.Regular.Title">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Regular.Title.Secondary" parent="Font.Regular.Title">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Regular.Title.Black" parent="Font.Regular.Title">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Regular.Title.Gray" parent="Font.Regular.Title">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Regular.Title.White" parent="Font.Regular.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT REGULAR SUBTITLE (16sp) ****** -->
+
+    <style name="Font.Regular.Subtitle" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_subtitle</item>
+    </style>
+
+    <style name="Font.Regular.Subtitle.Primary" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Regular.Subtitle.Secondary" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Regular.Subtitle.Black" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Regular.Subtitle.Gray" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Regular.Subtitle.White" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT REGULAR BODY (15sp) ****** -->
+
+    <style name="Font.Regular.Body" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_body</item>
+    </style>
+
+    <style name="Font.Regular.Body.Primary" parent="Font.Regular.Body">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Regular.Body.Seoncary" parent="Font.Regular.Body">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Regular.Body.Black" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Regular.Body.Gray" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Regular.Body.White" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT REGULAR FOOTER (12sp) ****** -->
+
+    <style name="Font.Regular.Footer" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_footer</item>
+    </style>
+
+    <style name="Font.Regular.Footer.Primary" parent="Font.Regular.Footer">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Regular.Footer.Secondary" parent="Font.Regular.Footer">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Regular.Footer.Black" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Regular.Footer.Gray" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Regular.Footer.White" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONTS BOLD ****** -->
+
+    <style name="Font.Bold" parent="Font">
+        <item name="android:fontFamily">@font/sailec_bold</item>
+    </style>
+
+    <!-- region ****** FONT BOLD TITLE (18sp) ****** -->
+
+    <style name="Font.Bold.Title" parent="Font.Bold">
+        <item name="android:textSize">@dimen/fontsize_title</item>
+    </style>
+
+    <style name="Font.Bold.Title.Primary" parent="Font.Bold.Title">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Bold.Title.Secondary" parent="Font.Bold.Title">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Bold.Title.Black" parent="Font.Bold.Title">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Bold.Title.Gray" parent="Font.Bold.Title">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Bold.Title.White" parent="Font.Bold.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT BOLD SUBTITLE (16sp) ****** -->
+
+    <style name="Font.Bold.Subtitle" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_subtitle</item>
+    </style>
+
+    <style name="Font.Bold.Subtitle.Primary" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Bold.Subtitle.Secondary" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Bold.Subtitle.Black" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Bold.Subtitle.Gray" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Bold.Subtitle.White" parent="Font.Regular.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT BOLD BODY (15sp) ****** -->
+
+    <style name="Font.Bold.Body" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_body</item>
+    </style>
+
+    <style name="Font.Bold.Body.Primary" parent="Font.Regular.Body">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Bold.Body.Secondary" parent="Font.Regular.Body">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Bold.Body.Black" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Bold.Body.Gray" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Bold.Body.White" parent="Font.Regular.Body">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT BOLD FOOTER (12sp) ****** -->
+
+    <style name="Font.Bold.Footer" parent="Font.Regular">
+        <item name="android:textSize">@dimen/fontsize_footer</item>
+    </style>
+
+    <style name="Font.Bold.Footer.Primary" parent="Font.Regular.Footer">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Bold.Footer.Secondary" parent="Font.Regular.Footer">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Bold.Footer.Black" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Bold.Footer.Gray" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Bold.Footer.White" parent="Font.Regular.Footer">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONTS ITALIC ****** -->
+
+    <style name="Font.Italic" parent="Font">
+        <item name="android:fontFamily">@font/sailec_regularitalic</item>
+    </style>
+
+    <!-- region ****** FONT ITALIC TITLE (18sp) ****** -->
+
+    <style name="Font.Italic.Title" parent="Font.Italic">
+        <item name="android:textSize">@dimen/fontsize_title</item>
+    </style>
+
+    <style name="Font.Italic.Title.Primary" parent="Font.Italic.Title">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Italic.Title.Secondary" parent="Font.Italic.Title">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Italic.Title.Black" parent="Font.Italic.Title">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Italic.Title.Gray" parent="Font.Italic.Title">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Italic.Title.White" parent="Font.Italic.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT ITALIC SUBTITLE (16sp) ****** -->
+
+    <style name="Font.Italic.Subtitle" parent="Font.Italic">
+        <item name="android:textSize">@dimen/fontsize_subtitle</item>
+    </style>
+
+    <style name="Font.Italic.Subtitle.Primary" parent="Font.Italic.Subtitle">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Italic.Subtitle.Secondary" parent="Font.Italic.Subtitle">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Italic.Subtitle.Black" parent="Font.Italic.Subtitle">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Italic.Subtitle.Gray" parent="Font.Italic.Subtitle">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Italic.Subtitle.White" parent="Font.Italic.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT ITALIC BODY (15sp) ****** -->
+
+    <style name="Font.Italic.Body" parent="Font.Italic">
+        <item name="android:textSize">@dimen/fontsize_body</item>
+    </style>
+
+    <style name="Font.Italic.Body.Primary" parent="Font.Italic.Body">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Italic.Body.Secondary" parent="Font.Italic.Body">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Italic.Body.Black" parent="Font.Italic.Body">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Italic.Body.Gray" parent="Font.Italic.Body">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Italic.Body.White" parent="Font.Italic.Body">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT ITALIC FOOTER (12sp) ****** -->
+
+    <style name="Font.Italic.Footer" parent="Font.Italic">
+        <item name="android:textSize">@dimen/fontsize_footer</item>
+    </style>
+
+    <style name="Font.Italic.Footer.Primary" parent="Font.Italic.Footer">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Font.Italic.Footer.Secondary" parent="Font.Italic.Footer">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Font.Italic.Footer.Black" parent="Font.Italic.Footer">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Font.Italic.Footer.Gray" parent="Font.Italic.Footer">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Font.Italic.Footer.White" parent="Font.Italic.Footer">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONTS THIN ****** -->
+
+    <style name="Font.Thin" parent="Font">
+        <item name="android:fontFamily">@font/sailec_thin</item>
+    </style>
+
+    <!-- region ****** FONT THIN TITLE (18sp) ****** -->
+
+    <style name="Thin.Title" parent="Font.Thin">
+        <item name="android:textSize">@dimen/fontsize_title</item>
+    </style>
+
+    <style name="Thin.Title.Primary" parent="Thin.Title">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Thin.Title.Secondary" parent="Thin.Title">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Thin.Title.Black" parent="Thin.Title">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Thin.Title.Gray" parent="Thin.Title">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Thin.Title.White" parent="Thin.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT THIN SUBTITLE (16sp) ****** -->
+
+    <style name="Thin.Subtitle" parent="Font.Thin">
+        <item name="android:textSize">@dimen/fontsize_subtitle</item>
+    </style>
+
+    <style name="Thin.Subtitle.Primary" parent="Thin.Subtitle">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Thin.Subtitle.Secondary" parent="Thin.Subtitle">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Thin.Subtitle.Black" parent="Thin.Subtitle">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Thin.Subtitle.Gray" parent="Thin.Subtitle">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Thin.Subtitle.White" parent="Thin.Subtitle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT THIN BODY (15sp) ****** -->
+
+    <style name="Thin.Body" parent="Font.Thin">
+        <item name="android:textSize">@dimen/fontsize_body</item>
+    </style>
+
+    <style name="Thin.Body.Primary" parent="Thin.Body">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Thin.Body.Secondary" parent="Thin.Body">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Thin.Body.Black" parent="Thin.Body">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Thin.Body.Gray" parent="Thin.Body">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Thin.Body.White" parent="Thin.Body">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+
+
+    <!-- region ****** FONT THIN FOOTER (12sp) ****** -->
+
+    <style name="Thin.Footer" parent="Font.Thin">
+        <item name="android:textSize">@dimen/fontsize_footer</item>
+    </style>
+
+    <style name="Thin.Footer.Primary" parent="Thin.Footer">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="Thin.Footer.Secondary" parent="Thin.Footer">
+        <item name="android:textColor">?colorSecondary</item>
+    </style>
+
+    <style name="Thin.Footer.Black" parent="Thin.Footer">
+        <item name="android:textColor">@color/mine_shaft</item>
+    </style>
+
+    <style name="Thin.Footer.Gray" parent="Thin.Footer">
+        <item name="android:textColor">@color/boulder</item>
+    </style>
+
+    <style name="Thin.Footer.White" parent="Thin.Footer">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- endregion -->
+
+    <!-- endregion -->
+
+
+</resources>

@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AndNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- PRIMARY -->
+        <item name="colorPrimary">@color/trade_wind</item>
+        <item name="colorPrimaryDark">@color/smalt_blue</item>
+        <item name="colorOnPrimary">@color/black_white</item>
+        <!-- SECONDARY -->
+        <item name="colorSecondary">@color/royal_blue</item>
+
+        <item name="colorError">@color/alto</item>
+        <item name="colorAccent">@color/amaranth</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+        <!-- Background color. -->
+        <item name="android:windowBackground">@color/black_white</item>
+        <!-- Texts default style. -->
+        <item name="android:textViewStyle">@style/Font.Regular.Body.Gray</item>
+        <!--<item name="android:buttonStyle">@style/Button.Secondary</item>--> <!-- project buttons default style (pressed_state doesn't work by this way) -->
+    </style>
+</resources>

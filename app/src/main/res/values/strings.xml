@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AndNotes</string>
+
+    <string name="menu_bottom_home">Home</string>
+    <string name="menu_bottom_list">List</string>
+    <string name="menu_bottom_settings">Settings</string>
+
+    <string name="home_title">Welcome!</string>
+    <string name="home_button">About</string>
+
+    <string name="about_title">About</string>
+    <string name="about_description">This is a project for practice the newest technologies about Android development making use of Android Jetpack: Navigation Component, View Model, Data Binding, LifeCycle Components, as well ass Third party libraries: Kotlin, Dagger 2, Retrofit, RxJava.</string>
+
+</resources>
