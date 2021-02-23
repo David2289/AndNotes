@@ -1,10 +1,9 @@
 package com.example.andnotes.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.andnotes.R
 import com.example.andnotes.databinding.MainActivityBinding
 import com.example.andnotes.ui.data.DataFragment
+import com.example.andnotes.ui.topics.TopicsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item_home -> loadFragment(NavHostFragment.create(R.navigation.home))
-                R.id.item_list -> Log.i("BOTTOMNAV", "list button pressed")
+                R.id.item_topics -> loadFragment(TopicsFragment())
                 R.id.item_data -> loadFragment(DataFragment())
             }
             true

@@ -4,7 +4,7 @@
 
     <style name="Font">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:letterSpacing">.05</item>
+        <item name="android:letterSpacing">.01</item>
         <item name="android:lineSpacingExtra">6sp</item>
     </style>
 

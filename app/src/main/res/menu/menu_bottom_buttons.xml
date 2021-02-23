@@ -6,12 +6,12 @@
         android:icon="@drawable/ic_home_black"
         android:title="@string/menu_bottom_home" />
     <item
-        android:id="@+id/item_list"
+        android:id="@+id/item_topics"
         android:icon="@drawable/ic_burger_black"
         android:title="@string/menu_bottom_list" />
     <item
         android:id="@+id/item_data"
         android:icon="@drawable/ic_gear_black"
-        android:title="@string/menu_bottom_settings" />
+        android:title="@string/menu_bottom_data" />
 
 </menu>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/commons_20dp">
+
+            <com.example.andnotes.ui.component.SelectItemView
+                android:id="@+id/item_retrofit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:title="@string/topics_item_retrofit_title"
+                app:desc="@string/topics_item_retrofit_desc"/>
+
+            <com.example.andnotes.ui.component.SelectItemView
+                android:id="@+id/item_animations"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_retrofit"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/commons_15dp"
+                app:title="@string/topics_item_animation_title"
+                app:desc="@string/topics_item_animation_desc"/>
+
+            <com.example.andnotes.ui.component.SelectItemView
+                android:id="@+id/item_permissions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_animations"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/commons_15dp"
+                app:title="@string/topics_item_permissions_title"
+                app:desc="@string/topics_item_permissions_desc"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

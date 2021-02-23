@@ -25,7 +25,7 @@
     <color name="science_blue">#024EC9</color>
     <color name="royal_blue">#5873E0</color>
     <color name="dodger_blue">#4287f5</color>
-    <color name="malibu">#7aadff</color>
+    <color name="malibu">#7AADFF</color>
 
     <color name="portage">#7A90EB</color>
     <color name="heliotrope">#9778FF</color>
@@ -36,9 +36,13 @@
     <!-- region ****** GREENS ****** -->
     <color name="smalt_blue">#4D9186</color>
     <color name="trade_wind">#4CB09F</color>
+    <color name="puerto_rico">#57C9B6</color>
+    <color name="downy">#60CCBA</color>
     <color name="citron">#87a628</color>
     <color name="atlantis">#A4C639</color>
+    <color name="conifer">#B4D645</color>
     <color name="sulu">#CBEB6A</color>
+    <color name="sulu2">#C6ED5A</color>
     <!-- endregion -->
 
 </resources>
