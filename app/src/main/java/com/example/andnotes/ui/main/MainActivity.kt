@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarContent.toolbarLogo.setOnClickListener { block() }
     }
 
+    fun isToolbarLogoVisible(): Boolean { return binding.toolbarContent.toolbarLogo.visibility == View.VISIBLE }
     fun showToolbarLogo() { binding.toolbarContent.toolbarLogo.visibility = View.VISIBLE }
     fun hideToolbarLogo() { binding.toolbarContent.toolbarLogo.visibility = View.GONE }
 

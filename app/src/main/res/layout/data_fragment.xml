@@ -63,45 +63,30 @@
             android:layout_marginTop="@dimen/commons_40dp"
             android:text="@string/data_social_network"/>
 
-        <TextView
-            android:id="@+id/linkedin_title"
+        <Button
+            android:id="@+id/linkedin"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/Font.Medium.Subtitle.Black"
+            style="@style/TextButton.Medium.Body.Primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/social_network_title"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/commons_15dp"
-            android:text="@string/data_social_network_linkedin_title"/>
-
-        <Button
-            android:id="@+id/linkedin_link"
-            android:layout_width="0dp"
-            style="@style/TextButton.Medium.Body.Secondary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linkedin_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/data_social_network_linkedin_link"/>
-
-        <TextView
-            android:id="@+id/github_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/Font.Medium.Subtitle.Black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linkedin_link"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/commons_10dp"
-            android:text="@string/data_social_network_github_title"/>
+            android:text="@string/data_social_network_linkedin_title"
+            app:icon="@drawable/ic_linkedin"
+            app:iconTint="@null"
+            app:iconSize="@dimen/commons_25dp"/>
 
         <Button
-            android:id="@+id/github_link"
+            android:id="@+id/github"
             android:layout_width="0dp"
-            style="@style/TextButton.Medium.Body.Secondary"
+            style="@style/TextButton.Medium.Body.Primary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/github_title"
+            app:layout_constraintTop_toBottomOf="@+id/linkedin"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/data_social_network_github_link"/>
+            android:text="@string/data_social_network_github_title"
+            app:icon="@drawable/ic_github"
+            app:iconTint="@null"
+            app:iconSize="@dimen/commons_25dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

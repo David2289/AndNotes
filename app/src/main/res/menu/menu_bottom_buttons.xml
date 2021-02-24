@@ -7,7 +7,7 @@
         android:title="@string/menu_bottom_home" />
     <item
         android:id="@+id/item_topics"
-        android:icon="@drawable/ic_burger_black"
+        android:icon="@drawable/ic_list_black"
         android:title="@string/menu_bottom_list" />
     <item
         android:id="@+id/item_data"

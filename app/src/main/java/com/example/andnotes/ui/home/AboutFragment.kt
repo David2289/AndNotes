@@ -21,11 +21,18 @@ class AboutFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.about_fragment, container, false)
-        (activity as MainActivity).configToolbarLogo(R.drawable.ic_backward_white, fun() {
+        (activity as MainActivity).configToolbarLogo(R.drawable.ic_arrow_left_white, fun() {
             Navigation.findNavController(binding.root).navigate(R.id.action_about_to_home)
             (activity as MainActivity).hideToolbarLogo()
         })
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if ((activity as MainActivity).isToolbarLogoVisible()) {
+            (activity as MainActivity).hideToolbarLogo()
+        }
     }
 
 }

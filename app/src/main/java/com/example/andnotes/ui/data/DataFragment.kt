@@ -21,12 +21,12 @@ class DataFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.data_fragment, container, false)
-        binding.linkedinLink.setOnClickListener {
+        binding.linkedin.setOnClickListener {
             val link = getString(R.string.data_social_network_linkedin_link)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
         }
-        binding.githubLink.setOnClickListener {
+        binding.github.setOnClickListener {
             val link = getString(R.string.data_social_network_github_link)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
             startActivity(intent)
