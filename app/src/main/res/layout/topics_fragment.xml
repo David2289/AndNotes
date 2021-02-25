@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
@@ -20,31 +21,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_10dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_search_gray"/>
+                android:src="@drawable/ic_search_gray" />
 
-            <com.example.andnotes.ui.component.SelectItemView
-                android:id="@+id/item_retrofit"
+            <com.example.commons.ui.component.selectitem.SelectItemView
+                android:id="@+id/item_display"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_20dp"
-                app:title="@string/topics_item_retrofit_title"
-                app:desc="@string/topics_item_retrofit_desc"/>
+                app:title="@string/topics_item_display_title"
+                app:desc="@string/topics_item_display_desc"/>
 
-            <com.example.andnotes.ui.component.SelectItemView
+            <com.example.commons.ui.component.selectitem.SelectItemView
                 android:id="@+id/item_animations"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_retrofit"
+                app:layout_constraintTop_toBottomOf="@+id/item_display"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_15dp"
                 app:title="@string/topics_item_animation_title"
                 app:desc="@string/topics_item_animation_desc"/>
 
-            <com.example.andnotes.ui.component.SelectItemView
+            <com.example.commons.ui.component.selectitem.SelectItemView
                 android:id="@+id/item_permissions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

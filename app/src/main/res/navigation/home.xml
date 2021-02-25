@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/home_screen"
-        android:name="com.example.andnotes.ui.home.HomeFragment"
+        android:name="com.example.andnotes.ui.view.home.fragment.HomeFragment"
         tools:layout="@layout/home_fragment">
 
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/about_screen"
-        android:name="com.example.andnotes.ui.home.AboutFragment"
+        android:name="com.example.andnotes.ui.view.home.fragment.AboutFragment"
         tools:layout="@layout/about_fragment">
 
         <action

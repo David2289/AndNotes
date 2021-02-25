@@ -1,2 +1,4 @@
+include ':display'
+include ':commons'
 include ':app'
 rootProject.name = "AndNotes"
