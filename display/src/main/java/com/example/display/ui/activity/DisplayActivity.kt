@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.display.R
 import com.example.display.databinding.DisplayActivityBinding
+import com.example.display.ui.fragment.ListFragment
 
 class DisplayActivity: AppCompatActivity() {
 
@@ -14,6 +15,11 @@ class DisplayActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.display_activity)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbarContent.toolbar)
+
+        val ft = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.fragment_content, ListFragment.newInstance())
+        ft.commit()
     }
 
 }

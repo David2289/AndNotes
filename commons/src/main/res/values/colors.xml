@@ -16,18 +16,21 @@
     <!-- region ****** REDS ****** -->
     <color name="amaranth">#D81B60</color>
     <color name="apricot">#ED8080</color>
-    <color name="pink">#FFC7D1</color>
     <color name="sundown">#FFA1B2</color>
+    <color name="pink">#FFC7D1</color>
     <color name="white_red">#ffe7e6</color>
     <!-- endregion -->
 
     <!-- region ****** BLUES ****** -->
     <color name="science_blue">#024EC9</color>
     <color name="royal_blue">#5873E0</color>
+    <color name="portage">#7A90EB</color>
     <color name="dodger_blue">#4287f5</color>
     <color name="malibu">#7AADFF</color>
+    <!-- endregion -->
 
-    <color name="portage">#7A90EB</color>
+    <!-- region ****** PURPLES ****** -->
+    <color name="purple_heart">#6544D4</color>
     <color name="heliotrope">#9778FF</color>
     <color name="melrose">#B7A1FF</color>
     <color name="fog">#E0D6FF</color>

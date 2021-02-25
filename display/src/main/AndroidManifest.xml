@@ -3,8 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.display">
 
-    <application>
-        <activity android:name=".ui.activity.DisplayActivity"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".DisplayApplication">
+        <activity
+            android:name=".ui.activity.DisplayActivity"
+            android:theme="@style/Theme.Display"/>
     </application>
 
 </manifest>

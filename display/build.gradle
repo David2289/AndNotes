@@ -2,6 +2,23 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+def gradleProperties = new Properties()
+gradleProperties.load(new FileInputStream(rootProject.file("gradle.properties")))
+
+android {
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", gradleProperties['API_URL']
+        }
+        debug {
+            buildConfigField "String", "API_URL", gradleProperties['API_URL']
+        }
+    }
+}
+
 dependencies {
     implementation project(':commons')
 
@@ -44,7 +61,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     // LOTTIE
-    implementation 'com.airbnb.android:lottie:2.5.0'
+    implementation 'com.airbnb.android:lottie:3.6.1'
 
     // PICASSO
     implementation "com.squareup.picasso:picasso:2.71828"
