@@ -7,6 +7,7 @@ buildscript {
         retrofit_version = "2.7.1"
         room_verssion = "2.2.6"
         nav_version = "2.3.3"
+        lottie_version = "3.6.1"
     }
     repositories {
         google()

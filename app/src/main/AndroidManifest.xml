@@ -11,12 +11,17 @@
         android:supportsRtl="true">
 
         <activity
-            android:name=".ui.view.home.activity.HomeActivity"
+            android:name=".ui.view.splash.SplashActivity"
             android:theme="@style/Theme.AndNotes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.view.home.activity.HomeActivity"
+            android:theme="@style/Theme.AndNotes">
         </activity>
 
     </application>

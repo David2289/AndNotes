@@ -2,7 +2,7 @@
 <resources>
 
     <string name="menu_bottom_home">Home</string>
-    <string name="menu_bottom_list">List</string>
+    <string name="menu_bottom_topics">Topics</string>
     <string name="menu_bottom_data">Data</string>
 
     <string name="home_title">Welcome!</string>

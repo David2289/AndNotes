@@ -8,14 +8,14 @@
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_filled_secondary"
+        android:background="@drawable/bg_outlined_secondary"
         android:padding="@dimen/commons_15dp">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/Font.Bold.Subtitle.White"
+            style="@style/Font.Bold.Subtitle.Black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
                 android:id="@+id/desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/Font.Regular.Body.White"
+                style="@style/Font.Regular.Body.Black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ward"
@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="@+id/desc"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:padding="@dimen/commons_05dp"
-                android:src="@drawable/ic_downward_white"
+                android:src="@drawable/ic_downward_black"
                 android:contentDescription="@null"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

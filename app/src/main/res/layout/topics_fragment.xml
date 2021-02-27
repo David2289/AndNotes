@@ -19,7 +19,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/commons_10dp"
+                android:layout_marginTop="@dimen/commons_30dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_search_gray" />
 
@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/commons_20dp"
+                android:layout_marginTop="@dimen/commons_50dp"
                 app:title="@string/topics_item_display_title"
                 app:desc="@string/topics_item_display_desc"/>
 
