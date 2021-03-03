@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.example.andnotes.R
 import com.example.andnotes.databinding.HomeFragmentBinding
 import com.example.andnotes.ui.view.home.manager.HomeManager
@@ -22,8 +21,7 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-        binding.button.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_home_to_about) }
-        binding.image.setOnClickListener { view -> HomeManager.pulseAnim(view as ImageView) }
+        binding.star.setOnClickListener { view -> HomeManager.pulseAnim(view as ImageView) }
         return binding.root
     }
 

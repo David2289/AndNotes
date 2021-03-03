@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item_home"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home_black"
-        android:title="@string/menu_bottom_home" />
+        android:title="@string/main_home_title" />
     <item
-        android:id="@+id/item_topics"
+        android:id="@+id/topics"
         android:icon="@drawable/ic_list_black"
-        android:title="@string/menu_bottom_topics" />
+        android:title="@string/main_topics_title" />
     <item
-        android:id="@+id/item_data"
+        android:id="@+id/data"
         android:icon="@drawable/ic_gear_black"
-        android:title="@string/menu_bottom_data" />
+        android:title="@string/main_data_title" />
 
 </menu>

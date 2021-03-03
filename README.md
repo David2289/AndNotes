@@ -1,6 +1,6 @@
 # AndNotes App
 
-Simple App used to make notes through the commentaries on code to study some topics of Android Development. Furthermore the project is used to take practice with the newest Android libraries that sometimes I can't use at work.
+Simple App written in Kotlin used to make notes through the commentaries on code to study some topics of Android Development. Furthermore the project is used to take practice with the newest Android libraries that sometimes I can't use at work.
 This project is a new version from AndroidNotes project which uses Java 8 and MVP architecture.
 
 ### Dashboard

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="menu_bottom_home">Home</string>
-    <string name="menu_bottom_topics">Topics</string>
-    <string name="menu_bottom_data">Data</string>
+    <string name="main_home_title">Home</string>
+    <string name="main_topics_title">Topics</string>
+    <string name="main_data_title">Data</string>
 
     <string name="home_title">Welcome!</string>
     <string name="home_button">About</string>
+    <string name="home_description">Simple App written in Kotlin used to make notes through the commentaries on code to study some topics of Android Development.
+        <br/>
+        Furthermore the project is used to take practice with the newest Android Jetpack libraries that sometimes I can\'t use at work.
+        <br/>
+        This project is a new version from AndroidNotes project which uses Java 8 and MVP architecture.</string>
 
     <string name="about_title">About</string>
-    <string name="about_description">This is a project for practice the newest technologies about Android development
-        making use of Android Jetpack: Navigation Component, View Model, Data Binding, LifeCycle Components, as well ass
-        Third party libraries: Kotlin, Dagger 2, Retrofit, RxJava, UnitTest.</string>
+    <string name="about_description">Simple App with Kotlin used to make notes through the commentaries on code to study some topics of Android Development.
+        Furthermore the project is used to take practice with the newest Android Jetpack libraries that sometimes I can\'t use at work.
+        This project is a new version from AndroidNotes project which uses Java 8 and MVP architecture.</string>
 
     <string name="topics_item_animation_title">Animations</string>
     <string name="topics_item_animation_desc">Show animations on views layouts (ConstraintLayout only) or values
