@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AndNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Green.ActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/trade_wind</item>
         <item name="colorOnPrimary">@color/black</item>

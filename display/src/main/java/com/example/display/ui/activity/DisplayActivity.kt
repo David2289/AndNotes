@@ -15,7 +15,6 @@ class DisplayActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.display_activity)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolbarContent.toolbar)
 
         val ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.fragment_content, ListFragment.newInstance())

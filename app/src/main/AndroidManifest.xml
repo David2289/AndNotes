@@ -12,7 +12,7 @@
 
         <activity
             android:name=".ui.view.splash.SplashActivity"
-            android:theme="@style/Theme.AndNotes">
+            android:theme="@style/Theme.Purple.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +21,7 @@
 
         <activity
             android:name=".ui.view.home.activity.HomeActivity"
-            android:theme="@style/Theme.AndNotes">
+            android:theme="@style/Theme.Green.ActionBar">
         </activity>
 
     </application>

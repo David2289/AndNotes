@@ -8,9 +8,7 @@
     <string name="home_title">Welcome!</string>
     <string name="home_button">About</string>
     <string name="home_description">Simple App written in Kotlin used to make notes through the commentaries on code to study some topics of Android Development.
-        <br/>
         Furthermore the project is used to take practice with the newest Android Jetpack libraries that sometimes I can\'t use at work.
-        <br/>
         This project is a new version from AndroidNotes project which uses Java 8 and MVP architecture.</string>
 
     <string name="about_title">About</string>
