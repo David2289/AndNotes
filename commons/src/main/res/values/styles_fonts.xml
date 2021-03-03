@@ -17,27 +17,27 @@
 
     <!-- region ****** FONT THIN TITLE (18sp) ****** -->
 
-    <style name="Thin.Title" parent="Font.Thin">
+    <style name="Font.Thin.Title" parent="Font.Thin">
         <item name="android:textSize">@dimen/fontsize_title</item>
     </style>
 
-    <style name="Thin.Title.Primary" parent="Thin.Title">
+    <style name="Font.Thin.Title.Primary" parent="Font.Thin.Title">
         <item name="android:textColor">?colorPrimary</item>
     </style>
 
-    <style name="Thin.Title.Secondary" parent="Thin.Title">
+    <style name="Font.Thin.Title.Secondary" parent="Font.Thin.Title">
         <item name="android:textColor">?colorSecondary</item>
     </style>
 
-    <style name="Thin.Title.Black" parent="Thin.Title">
+    <style name="Font.Thin.Title.Black" parent="Font.Thin.Title">
         <item name="android:textColor">@color/mine_shaft</item>
     </style>
 
-    <style name="Thin.Title.Gray" parent="Thin.Title">
+    <style name="Font.Thin.Title.Gray" parent="Font.Thin.Title">
         <item name="android:textColor">@color/boulder</item>
     </style>
 
-    <style name="Thin.Title.White" parent="Thin.Title">
+    <style name="Font.Thin.Title.White" parent="Font.Thin.Title">
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -47,27 +47,27 @@
 
     <!-- region ****** FONT THIN SUBTITLE (16sp) ****** -->
 
-    <style name="Thin.Subtitle" parent="Font.Thin">
+    <style name="Font.Thin.Subtitle" parent="Font.Thin">
         <item name="android:textSize">@dimen/fontsize_subtitle</item>
     </style>
 
-    <style name="Thin.Subtitle.Primary" parent="Thin.Subtitle">
+    <style name="Font.Thin.Subtitle.Primary" parent="Font.Thin.Subtitle">
         <item name="android:textColor">?colorPrimary</item>
     </style>
 
-    <style name="Thin.Subtitle.Secondary" parent="Thin.Subtitle">
+    <style name="Font.Thin.Subtitle.Secondary" parent="Font.Thin.Subtitle">
         <item name="android:textColor">?colorSecondary</item>
     </style>
 
-    <style name="Thin.Subtitle.Black" parent="Thin.Subtitle">
+    <style name="Font.Thin.Subtitle.Black" parent="Font.Thin.Subtitle">
         <item name="android:textColor">@color/mine_shaft</item>
     </style>
 
-    <style name="Thin.Subtitle.Gray" parent="Thin.Subtitle">
+    <style name="Font.Thin.Subtitle.Gray" parent="Font.Thin.Subtitle">
         <item name="android:textColor">@color/boulder</item>
     </style>
 
-    <style name="Thin.Subtitle.White" parent="Thin.Subtitle">
+    <style name="Font.Thin.Subtitle.White" parent="Font.Thin.Subtitle">
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -77,27 +77,27 @@
 
     <!-- region ****** FONT THIN BODY (15sp) ****** -->
 
-    <style name="Thin.Body" parent="Font.Thin">
+    <style name="Font.Thin.Body" parent="Font.Thin">
         <item name="android:textSize">@dimen/fontsize_body</item>
     </style>
 
-    <style name="Thin.Body.Primary" parent="Thin.Body">
+    <style name="Font.Thin.Body.Primary" parent="Font.Thin.Body">
         <item name="android:textColor">?colorPrimary</item>
     </style>
 
-    <style name="Thin.Body.Secondary" parent="Thin.Body">
+    <style name="Font.Thin.Body.Secondary" parent="Font.Thin.Body">
         <item name="android:textColor">?colorSecondary</item>
     </style>
 
-    <style name="Thin.Body.Black" parent="Thin.Body">
+    <style name="Font.Thin.Body.Black" parent="Font.Thin.Body">
         <item name="android:textColor">@color/mine_shaft</item>
     </style>
 
-    <style name="Thin.Body.Gray" parent="Thin.Body">
+    <style name="Font.Thin.Body.Gray" parent="Font.Thin.Body">
         <item name="android:textColor">@color/boulder</item>
     </style>
 
-    <style name="Thin.Body.White" parent="Thin.Body">
+    <style name="Font.Thin.Body.White" parent="Font.Thin.Body">
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -107,27 +107,27 @@
 
     <!-- region ****** FONT THIN FOOTER (12sp) ****** -->
 
-    <style name="Thin.Footer" parent="Font.Thin">
+    <style name="Font.Thin.Footer" parent="Font.Thin">
         <item name="android:textSize">@dimen/fontsize_footer</item>
     </style>
 
-    <style name="Thin.Footer.Primary" parent="Thin.Footer">
+    <style name="Font.Thin.Footer.Primary" parent="Font.Thin.Footer">
         <item name="android:textColor">?colorPrimary</item>
     </style>
 
-    <style name="Thin.Footer.Secondary" parent="Thin.Footer">
+    <style name="Font.Thin.Footer.Secondary" parent="Font.Thin.Footer">
         <item name="android:textColor">?colorSecondary</item>
     </style>
 
-    <style name="Thin.Footer.Black" parent="Thin.Footer">
+    <style name="Font.Thin.Footer.Black" parent="Font.Thin.Footer">
         <item name="android:textColor">@color/mine_shaft</item>
     </style>
 
-    <style name="Thin.Footer.Gray" parent="Thin.Footer">
+    <style name="Font.Thin.Footer.Gray" parent="Font.Thin.Footer">
         <item name="android:textColor">@color/boulder</item>
     </style>
 
-    <style name="Thin.Footer.White" parent="Thin.Footer">
+    <style name="Font.Thin.Footer.White" parent="Font.Thin.Footer">
         <item name="android:textColor">@color/white</item>
     </style>
 
