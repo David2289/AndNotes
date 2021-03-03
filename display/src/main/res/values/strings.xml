@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="screen_list_title">User list</string>
+    <string name="screen_detail_title">User Detail</string>
+
+</resources>

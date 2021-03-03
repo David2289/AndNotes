@@ -3,22 +3,34 @@ package com.example.display.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.display.R
 import com.example.display.databinding.DisplayActivityBinding
-import com.example.display.ui.fragment.ListFragment
 
 class DisplayActivity: AppCompatActivity() {
 
     lateinit var binding: DisplayActivityBinding
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.display_activity)
-        setContentView(binding.root)
 
-        val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.fragment_content, ListFragment.newInstance())
-        ft.commit()
+        // Nav Controller
+        navController = findNavController(R.id.fragment_content)
+        // Setup ActionBar
+        NavigationUI.setupActionBarWithNavController(this, navController)
+
+        setContentView(binding.root)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        navController.navigateUp()
+        return super.onSupportNavigateUp()
     }
 
 }

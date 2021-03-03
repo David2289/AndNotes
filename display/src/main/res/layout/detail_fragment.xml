@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/commons_30dp">
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            style="@style/Font.Regular.Title.Black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/commons_20dp"
+            android:gravity="center"
+            tools:text="Pancho Villa"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            style="@style/Font.Italic.Title.Black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/commons_20dp"
+            android:gravity="center"
+            tools:text="pancho.villa@apple.com"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

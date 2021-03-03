@@ -4,24 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.display.R
 import com.example.display.business.model.User
 import com.example.display.business.model.Users
 import com.example.display.databinding.ListFragmentBinding
 import com.example.display.ui.adapter.UsersAdapter
+import com.example.display.ui.utility.helper.Constants
 import com.example.display.ui.viewmodel.ListViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 class ListFragment : DaggerFragment() {
-
-    companion object {
-        fun newInstance() = ListFragment()
-    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -59,7 +58,10 @@ class ListFragment : DaggerFragment() {
 
     private fun configUsersUI() {
         userList = ArrayList()
-        adapter = UsersAdapter(userList)
+        adapter = UsersAdapter(userList) { user ->
+            val bundle = bundleOf(Constants.BUNDLE_USER to user)
+            Navigation.findNavController(binding.root).navigate(R.id.action_list_to_detail, bundle)
+        }
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.recyclerview.layoutManager = llm
         binding.recyclerview.adapter = adapter
