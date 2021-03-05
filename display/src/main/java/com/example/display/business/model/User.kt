@@ -1,13 +1,15 @@
 package com.example.display.business.model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "table_user")
-class User(
+data class User(
         @PrimaryKey
         @ColumnInfo(name = "id")
         @SerializedName("id")
@@ -32,4 +34,4 @@ class User(
         @SerializedName("avatar")
         var avatar: String
 
-) : Serializable
+) : Parcelable

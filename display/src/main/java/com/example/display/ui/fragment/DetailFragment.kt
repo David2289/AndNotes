@@ -23,7 +23,7 @@ class DetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
-        user = arguments?.getSerializable(Constants.BUNDLE_USER) as User
+        user = arguments?.getParcelable<User>(Constants.BUNDLE_USER) as User
         configUI()
         return binding.root
     }
