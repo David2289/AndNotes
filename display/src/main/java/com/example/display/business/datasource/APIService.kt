@@ -6,11 +6,12 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface APIService {
 
     @GET("api/users")
-    fun fetchUsers(): Single<Users>
+    fun fetchUsers(@Query("page") page: Int): Single<Users>
 
     @GET("api/users")
     fun fetchUsersObservable(): Observable<Response<Users>>

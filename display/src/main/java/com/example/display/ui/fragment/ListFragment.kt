@@ -12,7 +12,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.display.R
 import com.example.display.business.model.User
-import com.example.display.business.model.Users
 import com.example.display.databinding.ListFragmentBinding
 import com.example.display.ui.adapter.UsersAdapter
 import com.example.display.ui.utility.helper.Constants
@@ -47,9 +46,9 @@ class ListFragment : DaggerFragment() {
     }
 
     private fun configUsersObserver() {
-        val observer = Observer<Users> { result ->
+        val observer = Observer<List<User>> { result ->
             userList.clear()
-            userList.addAll(result.data)
+            userList.addAll(result)
             adapter.notifyDataSetChanged()
             binding.loadingContent.loading.visibility = View.GONE
         }

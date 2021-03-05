@@ -1,9 +1,14 @@
 package com.example.display.di.module
 
+import android.app.Application
+import androidx.room.Room
 import com.example.display.BuildConfig
 import com.example.display.business.datasource.APIService
 import com.example.display.business.datasource.local.UsersLocalDataSource
+import com.example.display.business.datasource.local.androom.dao.UserDao
+import com.example.display.business.datasource.local.androom.database.UserDatabase
 import com.example.display.business.datasource.remote.UsersRemoteDataSource
+import com.example.display.ui.utility.helper.Constants
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -42,13 +47,25 @@ class DataSourceModule {
     }
 
     @Provides
+    fun provideUserDatabase(context: Application): UserDatabase {
+        return Room.databaseBuilder(context, UserDatabase::class.java, Constants.USER_DATABASE)
+            .allowMainThreadQueries()
+            .build()
+    }
+
+    @Provides
+    fun provideUserDao(userDatabase: UserDatabase): UserDao {
+        return userDatabase.userDao()
+    }
+
+    @Provides
     fun provideUsersRemoteDataSource(apiService: APIService): UsersRemoteDataSource {
         return UsersRemoteDataSource(apiService)
     }
 
     @Provides
-    fun providesUsersLocalDataSource(): UsersLocalDataSource {
-        return UsersLocalDataSource()
+    fun providesUsersLocalDataSource(userDao: UserDao): UsersLocalDataSource {
+        return UsersLocalDataSource(userDao)
     }
 
 }
