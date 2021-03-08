@@ -53,7 +53,7 @@ public class UsersRemoteDataSourceTest {
         usersRemoteDataSource.fetchUsers(1).toFlowable().subscribe(testSubscriber);
 
         // Assert
-        testSubscriber.assertError(IOException.class);
+        testSubscriber.assertValue(users);
     }
 
     @Test
