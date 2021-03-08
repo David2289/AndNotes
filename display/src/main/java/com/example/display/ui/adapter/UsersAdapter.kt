@@ -23,7 +23,7 @@ class UsersAdapter(var userList: List<User>, val onItemClick: (user: User) -> Un
         Picasso.get().load(user.avatar).into(holder.photo)
         val completeName = user.firstName + " " + user.lastName
         holder.name.text = completeName
-        holder.view.setOnClickListener { onItemClick.invoke(user) }
+        holder.view.setOnClickListener { onItemClick(user) }
     }
 
     class UserVH(val view: View): RecyclerView.ViewHolder(view) {

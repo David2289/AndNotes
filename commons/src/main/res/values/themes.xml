@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/smalt_blue</item>
         <item name="colorOnPrimary">@color/black_white</item>
         <!-- SECONDARY -->
-        <item name="colorSecondary">@color/melrose</item>
+        <item name="colorSecondary">@color/dodger_blue</item>
 
         <item name="colorError">@color/alto</item>
         <item name="colorAccent">@color/amaranth</item>
@@ -25,7 +25,7 @@
         <item name="colorPrimaryDark">@color/purple_heart</item>
         <item name="colorOnPrimary">@color/black_white</item>
         <!-- SECONDARY -->
-        <item name="colorSecondary">@color/dodger_blue</item>
+        <item name="colorSecondary">@color/trade_wind</item>
 
         <item name="colorError">@color/alto</item>
         <item name="colorAccent">@color/amaranth</item>
@@ -44,7 +44,7 @@
         <item name="colorPrimaryDark">@color/purple_heart</item>
         <item name="colorOnPrimary">@color/black_white</item>
         <!-- SECONDARY -->
-        <item name="colorSecondary">@color/dodger_blue</item>
+        <item name="colorSecondary">@color/trade_wind</item>
 
         <item name="colorError">@color/alto</item>
         <item name="colorAccent">@color/amaranth</item>

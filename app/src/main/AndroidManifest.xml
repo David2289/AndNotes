@@ -21,7 +21,7 @@
 
         <activity
             android:name=".ui.view.home.activity.HomeActivity"
-            android:theme="@style/Theme.Green.ActionBar">
+            android:theme="@style/Theme.Purple.ActionBar">
         </activity>
 
     </application>
