@@ -24,15 +24,9 @@ class DetailFragment: Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
         user = arguments?.getParcelable<User>(Constants.BUNDLE_USER) as User
-        configUI()
-        return binding.root
-    }
-
-    private fun configUI() {
+        binding.user = user
         Picasso.get().load(user.avatar).into(binding.photo)
-        val completeName = user.firstName + " " + user.lastName
-        binding.name.text = completeName
-        binding.email.text = user.email
+        return binding.root
     }
 
 }
