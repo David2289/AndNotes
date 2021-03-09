@@ -21,7 +21,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_30dp"
                 android:contentDescription="@null"
-                android:src="@drawable/ic_search_gray" />
+                android:src="@drawable/ic_android_logo" />
 
             <com.example.commons.ui.component.selectitem.SelectItemView
                 android:id="@+id/item_display"

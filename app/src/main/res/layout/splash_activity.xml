@@ -15,9 +15,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:lottie_rawRes="@raw/splash"
+            android:layout_margin="@dimen/commons_50dp"
+            app:lottie_rawRes="@raw/splash1"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            app:lottie_speed="1"
+            app:lottie_repeatCount="0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,7 +10,7 @@
         android:name=".DisplayApplication">
         <activity
             android:name=".ui.activity.DisplayActivity"
-            android:theme="@style/Theme.Green.ActionBar"/>
+            android:theme="@style/Theme.Purple.ActionBar"/>
     </application>
 
 </manifest>

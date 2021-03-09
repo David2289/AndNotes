@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.andnotes.R
 import com.example.andnotes.databinding.TopicsFragmentBinding
+import com.example.andnotes.ui.view.home.manager.TopicsManager
 
 class TopicsFragment: Fragment() {
 
@@ -20,6 +22,7 @@ class TopicsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.topics_fragment, container, false)
+        binding.image.setOnClickListener { view -> TopicsManager.pulseAnim(view as ImageView) }
         binding.itemDisplay.setOnClickListener{
             context?.let {
                 val intent = Intent(Intent.ACTION_VIEW)

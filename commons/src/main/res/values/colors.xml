@@ -37,11 +37,10 @@
     <!-- endregion -->
 
     <!-- region ****** GREENS ****** -->
-    <color name="smalt_blue">#4D9186</color>
-    <color name="trade_wind">#4CB09F</color>
-    <color name="puerto_rico">#57C9B6</color>
-    <color name="downy">#60CCBA</color>
-    <color name="citron">#87a628</color>
+    <color name="jungle_green">#27B366</color>
+    <color name="shamrock">#3DDC85</color>
+
+    <color name="citron">#87A628</color>
     <color name="atlantis">#A4C639</color>
     <color name="conifer">#B4D645</color>
     <color name="sulu">#CBEB6A</color>
