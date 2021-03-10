@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AndNotes</string>
 
+    <string name="commons_continue">Continue</string>
+    <string name="commons_next">Next</string>
+
 </resources>

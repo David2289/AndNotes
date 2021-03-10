@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.display.R
 import com.example.display.business.model.User
 import com.example.display.databinding.DetailFragmentBinding
-import com.example.display.ui.utility.helper.Constants
+import com.example.commons.utility.helper.Constants
 import com.squareup.picasso.Picasso
 
 class DetailFragment: Fragment() {

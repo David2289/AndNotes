@@ -8,7 +8,7 @@ import com.example.display.business.datasource.local.UsersLocalDataSource
 import com.example.display.business.datasource.local.androom.dao.UserDao
 import com.example.display.business.datasource.local.androom.database.UserDatabase
 import com.example.display.business.datasource.remote.UsersRemoteDataSource
-import com.example.display.ui.utility.helper.Constants
+import com.example.commons.utility.helper.Constants
 import dagger.Module
 import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory

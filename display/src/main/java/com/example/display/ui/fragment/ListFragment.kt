@@ -14,7 +14,7 @@ import com.example.display.R
 import com.example.display.business.model.User
 import com.example.display.databinding.ListFragmentBinding
 import com.example.display.ui.adapter.UsersAdapter
-import com.example.display.ui.utility.helper.Constants
+import com.example.commons.utility.helper.Constants
 import com.example.display.ui.viewmodel.ListViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject

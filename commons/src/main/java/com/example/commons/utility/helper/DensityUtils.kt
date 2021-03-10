@@ -1,4 +1,4 @@
-package com.example.andnotes.ui.utility.helper
+package com.example.commons.utility.helper
 
 import android.content.res.Resources
 

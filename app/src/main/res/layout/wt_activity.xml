@@ -25,9 +25,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:ci_drawable="@drawable/shp_dot_primary"
+            app:ci_drawable="@drawable/shp_dot_black"
             app:ci_drawable_unselected="@drawable/shp_dot_gray"
             android:layout_marginTop="@dimen/commons_05dp"/>
+
+        <Button
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            style="@style/TextButton.Medium.Body.Secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/commons_20dp"
+            app:icon="@drawable/ic_forward_black_15dp"
+            app:iconTint="?colorSecondary"
+            app:iconGravity="end"
+            app:iconPadding="@dimen/commons_10dp"
+            android:gravity="center"
+            android:text="@string/commons_continue"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     
