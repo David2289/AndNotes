@@ -33,7 +33,7 @@ class WTActivity: AppCompatActivity() {
         adapter = WTAdapter(wtItemList)
         binding.viewpager.adapter = adapter
 
-        binding.circleIndicator.setViewPager(binding.viewpager)
+        binding.dotsIndicator.setViewPager2(binding.viewpager)
 
         binding.continueButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)

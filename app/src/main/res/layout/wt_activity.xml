@@ -18,16 +18,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_walkthrough"/>
 
-        <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/circle_indicator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/commons_10dp"
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/dots_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:ci_drawable="@drawable/shp_dot_black"
-            app:ci_drawable_unselected="@drawable/shp_dot_gray"
-            android:layout_marginTop="@dimen/commons_05dp"/>
+            app:dotsColor="@color/dove_gray"
+            app:dotsStrokeColor="@color/alto"
+            app:dotsCornerRadius="@dimen/commons_05dp"
+            app:dotsSize="@dimen/commons_10dp"
+            app:dotsSpacing="@dimen/commons_05dp"
+            app:dotsStrokeWidth="2dp"/>
 
         <Button
             android:id="@+id/continue_button"
