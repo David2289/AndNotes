@@ -20,6 +20,10 @@
         </activity>
 
         <activity
+            android:name=".ui.view.walkthrough.activity.WTActivity"
+            android:theme="@style/Theme.Green.NoActionBar"/>
+
+        <activity
             android:name=".ui.view.home.activity.HomeActivity"
             android:theme="@style/Theme.Green.ActionBar">
         </activity>

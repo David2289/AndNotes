@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/commons_20dp"
+    android:paddingBottom="@dimen/commons_20dp"
+    android:paddingStart="@dimen/commons_50dp"
+    android:paddingEnd="@dimen/commons_50dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@null"
+        tools:src="@drawable/img_jetpack_logo"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        style="@style/Font.Bold.Subtitle.Black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/commons_25dp"
+        android:gravity="center"
+        tools:text="Subtitle"/>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        style="@style/Font.Regular.Body.Black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/commons_10dp"
+        android:gravity="center"
+        tools:text="Lorem impsum. Lorem ipsum. Lorem ipsum"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

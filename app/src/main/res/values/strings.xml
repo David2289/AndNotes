@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="wt_page1_title">Topics</string>
+    <string name="wt_page1_description">List of the most common Android Topics to check how was developed.</string>
+    <string name="wt_page2_title">Android Jetpack</string>
+    <string name="wt_page2_description">The project is making use of the newest technology of Android Jetpack Library.</string>
+    <string name="wt_page3_title">Reactive</string>
+    <string name="wt_page3_description">This is a reactive App thanks to RxJava dependency.</string>
+
     <string name="main_home_title">Home</string>
     <string name="main_topics_title">Topics</string>
     <string name="main_data_title">Data</string>

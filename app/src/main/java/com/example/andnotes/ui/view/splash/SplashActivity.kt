@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.andnotes.R
 import com.example.andnotes.databinding.SplashActivityBinding
 import com.example.andnotes.ui.view.home.activity.HomeActivity
+import com.example.andnotes.ui.view.walkthrough.activity.WTActivity
 
 class SplashActivity: AppCompatActivity() {
 
@@ -19,7 +20,7 @@ class SplashActivity: AppCompatActivity() {
             val progress = (valueAnimator.animatedValue as Float * 100).toInt()
             if (progress > 96) {
                 binding.animated.removeAllAnimatorListeners()
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, WTActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()
