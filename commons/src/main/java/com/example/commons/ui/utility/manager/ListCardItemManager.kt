@@ -1,4 +1,4 @@
-package com.example.commons.ui.component.selectitem
+package com.example.commons.ui.utility.manager
 
 import android.animation.PropertyValuesHolder
 import android.animation.ValueAnimator
@@ -6,9 +6,9 @@ import android.text.TextUtils
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.animation.addListener
-import com.example.commons.databinding.SelectItemViewBinding
+import com.example.commons.databinding.ListCardItemBinding
 
-class SelectItemManager {
+class ListCardItemManager {
 
     companion object {
 
@@ -19,7 +19,7 @@ class SelectItemManager {
             textView.ellipsize = TextUtils.TruncateAt.END
         }
 
-        fun expandDetail(binding: SelectItemViewBinding, descContentCollapsedHeight: Int, descContentExpandedHeight: Int) {
+        fun expandDetail(binding: ListCardItemBinding, descContentCollapsedHeight: Int, descContentExpandedHeight: Int) {
             maxLines(binding.desc, Int.MAX_VALUE)
 
             val set = ConstraintSet()
@@ -38,7 +38,7 @@ class SelectItemManager {
             animator.start()
         }
 
-        fun collapseDetail(binding: SelectItemViewBinding, descContentCollapsedHeight: Int, descContentExpandedHeight: Int) {
+        fun collapseDetail(binding: ListCardItemBinding, descContentCollapsedHeight: Int, descContentExpandedHeight: Int) {
             val set = ConstraintSet()
             set.clone(binding.mainContent)
 

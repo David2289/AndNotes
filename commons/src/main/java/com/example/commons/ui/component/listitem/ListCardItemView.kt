@@ -1,4 +1,4 @@
-package com.example.commons.ui.component.selectitem
+package com.example.commons.ui.component.listitem
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -8,11 +8,12 @@ import android.view.ViewTreeObserver
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import com.example.commons.R
-import com.example.commons.databinding.SelectItemViewBinding
+import com.example.commons.databinding.ListCardItemBinding
+import com.example.commons.ui.utility.manager.ListCardItemManager
 
-class SelectItemView: ConstraintLayout {
+class ListCardItemView: ConstraintLayout {
 
-    var binding: SelectItemViewBinding
+    var binding: ListCardItemBinding
     var descContentExpandedHeight = 0
     var descContentCollapsedHeight = 0
     var descContentExpanded = false
@@ -22,13 +23,13 @@ class SelectItemView: ConstraintLayout {
     constructor(context: Context, attrs: AttributeSet?): super(context, attrs) {
 
         val inflater = LayoutInflater.from(context)
-        binding = DataBindingUtil.inflate(inflater, R.layout.select_item_view, this, true)
+        binding = DataBindingUtil.inflate(inflater, R.layout.list_card_item, this, true)
 
         binding.descContent.viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 descContentExpandedHeight = binding.descContent.height
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                SelectItemManager.maxLines(binding.desc, 1)
+                ListCardItemManager.maxLines(binding.desc, 1)
             }
         })
         binding.ward.setOnClickListener {
@@ -37,17 +38,17 @@ class SelectItemView: ConstraintLayout {
             }
             if (descContentExpanded) {
                 descContentExpanded = false
-                SelectItemManager.collapseDetail(binding, descContentCollapsedHeight, descContentExpandedHeight)
+                ListCardItemManager.collapseDetail(binding, descContentCollapsedHeight, descContentExpandedHeight)
             } else {
                 descContentExpanded = true
-                SelectItemManager.expandDetail(binding, descContentCollapsedHeight, descContentExpandedHeight)
+                ListCardItemManager.expandDetail(binding, descContentCollapsedHeight, descContentExpandedHeight)
             }
         }
 
         if (attrs == null) return
-        val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SelectItemView)
-        val title = typedArray.getString(R.styleable.SelectItemView_title)
-        val desc = typedArray.getString(R.styleable.SelectItemView_desc)
+        val typedArray: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.ListCardItemView)
+        val title = typedArray.getString(R.styleable.ListCardItemView_title)
+        val desc = typedArray.getString(R.styleable.ListCardItemView_desc)
         configUI(title, desc)
         typedArray.recycle()
 

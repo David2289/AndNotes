@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/commons_20dp"
+        android:paddingBottom="@dimen/commons_20dp">
+
+        <com.example.commons.ui.component.listitem.ListStdItemView
+            android:id="@+id/item_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/settings_item_theme"/>
+
+        <com.example.commons.ui.component.listitem.ListStdItemView
+            android:id="@+id/item_walkthrough"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_theme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/settings_item_walkthrough"/>
+
+        <com.example.commons.ui.component.listitem.ListStdItemView
+            android:id="@+id/item_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_walkthrough"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/settings_item_language"/>
+
+        <com.example.commons.ui.component.listitem.ListStdItemView
+            android:id="@+id/item_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:title="@string/settings_item_author"
+            app:stroke_show="false"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

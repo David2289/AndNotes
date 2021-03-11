@@ -20,8 +20,8 @@
 
     <fragment
         android:id="@+id/data"
-        android:name="com.example.andnotes.ui.view.home.fragment.DataFragment"
+        android:name="com.example.andnotes.ui.view.home.fragment.SettingsFragment"
         android:label="@string/main_data_title"
-        tools:layout="@layout/data_fragment"/>
+        tools:layout="@layout/settings_fragment"/>
 
 </navigation>

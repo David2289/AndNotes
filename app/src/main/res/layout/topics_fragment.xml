@@ -23,7 +23,7 @@
                 android:contentDescription="@null"
                 android:src="@drawable/ic_android_logo" />
 
-            <com.example.commons.ui.component.selectitem.SelectItemView
+            <com.example.commons.ui.component.listitem.ListCardItemView
                 android:id="@+id/item_display"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                 app:title="@string/topics_item_display_title"
                 app:desc="@string/topics_item_display_desc"/>
 
-            <com.example.commons.ui.component.selectitem.SelectItemView
+            <com.example.commons.ui.component.listitem.ListCardItemView
                 android:id="@+id/item_animations"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 app:title="@string/topics_item_animation_title"
                 app:desc="@string/topics_item_animation_desc"/>
 
-            <com.example.commons.ui.component.selectitem.SelectItemView
+            <com.example.commons.ui.component.listitem.ListCardItemView
                 android:id="@+id/item_permissions"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -34,6 +34,11 @@
     <string name="topics_item_permissions_title">Permissions</string>
     <string name="topics_item_permissions_desc">Permissions implementation to access to gallery, camera, location, etc. for Android API 23 and above.</string>
 
+    <string name="settings_item_theme">Theme</string>
+    <string name="settings_item_walkthrough">Walkthrough</string>
+    <string name="settings_item_language">Language</string>
+    <string name="settings_item_author">Author</string>
+
     <string name="data_name">David Pasache Lavado</string>
     <string name="data_email">david.2289@icloud.com</string>
     <string name="data_social_network">Social Network</string>

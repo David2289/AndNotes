@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SelectItemView">
+    <declare-styleable name="Commons">
         <attr name="title" format="string"/>
+        <attr name="subtitle" format="string"/>
         <attr name="desc" format="string"/>
+        <attr name="image" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="ListCardItemView">
+        <attr name="title"/>
+        <attr name="desc"/>
+    </declare-styleable>
+
+    <declare-styleable name="ListStdItemView">
+        <attr name="title"/>
+        <attr name="subtitle"/>
+        <attr name="image"/>
+        <attr name="icon"/>
+        <attr name="stroke_show" format="boolean"/>
     </declare-styleable>
 
 </resources>
