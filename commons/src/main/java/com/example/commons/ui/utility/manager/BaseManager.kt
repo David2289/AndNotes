@@ -6,16 +6,30 @@ import android.widget.ImageView
 abstract class BaseManager {
 
     companion object {
+
+        private const val ANIM_DURATION_FAST = 180L
+        private const val ANIM_DURATION_SLOW = 560L
+
         fun pulseAnim(imageView: ImageView) {
             val animator = ValueAnimator.ofFloat(1.0f, 1.2f)
-            animator.addUpdateListener {
-                imageView.scaleX = animator.animatedValue as Float
-                imageView.scaleY = animator.animatedValue as Float
+            animator.addUpdateListener { valAnimator ->
+                imageView.scaleX = valAnimator.animatedValue as Float
+                imageView.scaleY = valAnimator.animatedValue as Float
             }
-            animator.duration = 180
+            animator.duration = ANIM_DURATION_FAST
             animator.repeatMode = ValueAnimator.REVERSE
             animator.repeatCount = 1
             animator.start()
         }
+
+        fun rotateAnim(imageView: ImageView) {
+            val animator = ValueAnimator.ofFloat(0f, 360f)
+            animator.addUpdateListener { valAnimator ->
+                imageView.rotation = valAnimator.animatedValue as Float
+            }
+            animator.duration = ANIM_DURATION_SLOW
+            animator.start()
+        }
+
     }
 }

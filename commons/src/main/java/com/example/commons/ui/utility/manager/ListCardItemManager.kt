@@ -29,10 +29,10 @@ class ListCardItemManager {
                 PropertyValuesHolder.ofInt("expandDesc", descContentCollapsedHeight, descContentExpandedHeight),
                 PropertyValuesHolder.ofFloat("rotateWard", 0f, 180f)
             )
-            animator.addUpdateListener {
-                set.constrainHeight(binding.descContent.id, animator.getAnimatedValue("expandDesc") as Int)
+            animator.addUpdateListener { valAnimator ->
+                set.constrainHeight(binding.descContent.id, valAnimator.getAnimatedValue("expandDesc") as Int)
                 set.applyTo(binding.mainContent)
-                binding.ward.rotation = animator.getAnimatedValue("rotateWard") as Float
+                binding.ward.rotation = valAnimator.getAnimatedValue("rotateWard") as Float
             }
             animator.duration = ANIM_DURATION
             animator.start()

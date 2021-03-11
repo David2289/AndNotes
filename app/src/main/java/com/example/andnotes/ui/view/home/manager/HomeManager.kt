@@ -9,6 +9,9 @@ class HomeManager: BaseManager() {
         fun pulseAnim(imageView: ImageView) {
             BaseManager.pulseAnim(imageView)
         }
+        fun rotateAnim(imageView: ImageView) {
+            BaseManager.rotateAnim(imageView)
+        }
     }
 
 }

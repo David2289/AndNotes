@@ -21,7 +21,7 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-        binding.star.setOnClickListener { view -> HomeManager.pulseAnim(view as ImageView) }
+        binding.star.setOnClickListener { view -> HomeManager.rotateAnim(view as ImageView) }
         return binding.root
     }
 
