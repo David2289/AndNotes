@@ -10,8 +10,8 @@
         android:icon="@drawable/ic_list_black"
         android:title="@string/main_topics_title" />
     <item
-        android:id="@+id/data"
+        android:id="@+id/sett"
         android:icon="@drawable/ic_gear_black"
-        android:title="@string/main_data_title" />
+        android:title="@string/main_sett_title" />
 
 </menu>

@@ -18,10 +18,32 @@
         android:label="@string/main_topics_title"
         tools:layout="@layout/topics_fragment"/>
 
-    <fragment
-        android:id="@+id/data"
-        android:name="com.example.andnotes.ui.view.home.fragment.SettingsFragment"
-        android:label="@string/main_data_title"
-        tools:layout="@layout/settings_fragment"/>
+    <navigation
+        android:id="@+id/sett"
+        app:startDestination="@id/settings">
+
+        <fragment
+            android:id="@+id/settings"
+            android:name="com.example.andnotes.ui.view.home.fragment.SettingsFragment"
+            android:label="@string/main_sett_title"
+            tools:layout="@layout/topics_fragment">
+
+            <action
+                android:id="@+id/action_settings_to_author"
+                app:destination="@id/author"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"/>
+
+        </fragment>
+
+        <fragment
+            android:id="@+id/author"
+            android:name="com.example.andnotes.ui.view.home.fragment.AuthorFragment"
+            android:label="@string/main_author_title"
+            tools:layout="@layout/author_fragment"/>
+
+    </navigation>
 
 </navigation>
