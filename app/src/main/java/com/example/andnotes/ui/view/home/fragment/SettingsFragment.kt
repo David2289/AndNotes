@@ -26,6 +26,7 @@ class SettingsFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
         binding.itemLanguage.setOnClickListener { Toast.makeText(context, "Language selected", Toast.LENGTH_LONG).show() }
         binding.itemAuthor.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_settings_to_author) }
+        binding.itemTermsConditions.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_settings_to_terms) }
         binding.versionDate.text = SettingsManager.versionDate()
         return binding.root
     }

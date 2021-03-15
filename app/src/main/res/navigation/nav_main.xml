@@ -36,6 +36,14 @@
                 app:enterAnim="@anim/slide_in_right"
                 app:exitAnim="@anim/slide_out_left"/>
 
+            <action
+                android:id="@+id/action_settings_to_terms"
+                app:destination="@id/terms"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"/>
+
         </fragment>
 
         <fragment
@@ -43,6 +51,12 @@
             android:name="com.example.andnotes.ui.view.home.fragment.AuthorFragment"
             android:label="@string/main_author_title"
             tools:layout="@layout/author_fragment"/>
+
+        <fragment
+            android:id="@+id/terms"
+            android:name="com.example.andnotes.ui.view.home.fragment.TermsFragment"
+            android:label="@string/main_terms_title"
+            tools:layout="@layout/terms_fragment"/>
 
     </navigation>
 

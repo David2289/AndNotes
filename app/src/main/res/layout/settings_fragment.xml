@@ -56,7 +56,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/item_language"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:title="@string/settings_item_terms_conditions"/>
+                    app:title="@string/settings_item_terms"/>
 
                 <com.example.commons.ui.component.listitem.ListStdItemView
                     android:id="@+id/item_author"

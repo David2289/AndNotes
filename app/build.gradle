@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 
+def gradleProperties = new Properties()
+gradleProperties.load(new FileInputStream(rootProject.file("gradle.properties")))
+
 android {
 
     defaultConfig {
@@ -15,6 +18,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "TERMS_URL", gradleProperties['TERMS_URL']
+        }
+        debug {
+            buildConfigField "String", "TERMS_URL", gradleProperties['TERMS_URL']
         }
     }
 }
