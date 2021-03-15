@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.andnotes.R
 import com.example.andnotes.databinding.HomeFragmentBinding
-import com.example.andnotes.ui.view.home.manager.HomeManager
+import com.example.commons.ui.utility.helper.AnimUtils
 
 class HomeFragment: Fragment() {
 
@@ -21,7 +21,7 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false)
-        binding.star.setOnClickListener { view -> HomeManager.rotateAnim(view as ImageView) }
+        binding.star.setOnClickListener { view -> AnimUtils.rotateAnim(view as ImageView) }
         return binding.root
     }
 

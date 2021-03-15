@@ -1,9 +1,9 @@
-package com.example.commons.ui.utility.manager
+package com.example.commons.ui.utility.helper
 
 import android.animation.ValueAnimator
 import android.widget.ImageView
 
-abstract class BaseManager {
+abstract class AnimUtils {
 
     companion object {
 

@@ -8,8 +8,11 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.andnotes.BuildConfig
 import com.example.andnotes.R
 import com.example.andnotes.databinding.SettingsFragmentBinding
+import com.example.andnotes.ui.view.home.manager.SettingsManager
+import com.example.commons.utility.helper.DateUtils
 
 class SettingsFragment: Fragment() {
 
@@ -23,6 +26,7 @@ class SettingsFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.settings_fragment, container, false)
         binding.itemLanguage.setOnClickListener { Toast.makeText(context, "Language selected", Toast.LENGTH_LONG).show() }
         binding.itemAuthor.setOnClickListener { Navigation.findNavController(binding.root).navigate(R.id.action_settings_to_author) }
+        binding.versionDate.text = SettingsManager.versionDate()
         return binding.root
     }
 }

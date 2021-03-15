@@ -1,49 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/commons_20dp"
-        android:paddingBottom="@dimen/commons_20dp">
+        android:layout_height="match_parent">
 
-        <com.example.commons.ui.component.listitem.ListStdItemView
-            android:id="@+id/item_theme"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:title="@string/settings_item_theme"/>
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.example.commons.ui.component.listitem.ListStdItemView
-            android:id="@+id/item_walkthrough"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_theme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:title="@string/settings_item_walkthrough"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/commons_30dp"
+                android:paddingBottom="@dimen/commons_30dp">
 
-        <com.example.commons.ui.component.listitem.ListStdItemView
-            android:id="@+id/item_language"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_walkthrough"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:title="@string/settings_item_language"/>
+                <com.example.commons.ui.component.listitem.ListStdItemView
+                    android:id="@+id/item_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:title="@string/settings_item_theme"/>
 
-        <com.example.commons.ui.component.listitem.ListStdItemView
-            android:id="@+id/item_author"
+                <com.example.commons.ui.component.listitem.ListStdItemView
+                    android:id="@+id/item_walkthrough"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_theme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:title="@string/settings_item_walkthrough"/>
+
+                <com.example.commons.ui.component.listitem.ListStdItemView
+                    android:id="@+id/item_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_walkthrough"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:title="@string/settings_item_language"/>
+
+                <com.example.commons.ui.component.listitem.ListStdItemView
+                    android:id="@+id/item_terms_conditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_language"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:title="@string/settings_item_terms_conditions"/>
+
+                <com.example.commons.ui.component.listitem.ListStdItemView
+                    android:id="@+id/item_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_terms_conditions"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:title="@string/settings_item_author"
+                    app:stroke_show="false"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/version_date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Font.Italic.Footer.Gray"
+            android:paddingStart="@dimen/commons_20dp"
+            android:paddingEnd="@dimen/commons_20dp"
+            android:paddingBottom="@dimen/commons_10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_language"
             app:layout_constraintEnd_toEndOf="parent"
-            app:title="@string/settings_item_author"
-            app:stroke_show="false"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="end"
+            tools:text="v1.0.0 - 11 mar 2021"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,16 +3,15 @@
 
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/gallery</item>
     </style>
 
     <style name="Divider.Section">
         <item name="android:layout_height">@dimen/commons_10dp</item>
-        <item name="android:background">@color/gallery</item>
     </style>
 
     <style name="Divider.Item">
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/alto</item>
     </style>
 
 </resources>

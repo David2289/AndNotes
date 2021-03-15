@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/title"
                 android:layout_width="0dp"
-                style="@style/Font.Medium.Subtitle.Black"
+                style="@style/Font.Regular.Subtitle.Black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/end_icon"
