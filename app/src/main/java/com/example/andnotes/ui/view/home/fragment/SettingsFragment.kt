@@ -8,11 +8,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.example.andnotes.BuildConfig
 import com.example.andnotes.R
 import com.example.andnotes.databinding.SettingsFragmentBinding
-import com.example.andnotes.ui.view.home.manager.SettingsManager
-import com.example.commons.utility.helper.DateUtils
+import com.example.andnotes.ui.utility.manager.SettingsManager
 
 class SettingsFragment: Fragment() {
 

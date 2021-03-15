@@ -1,4 +1,4 @@
-package com.example.andnotes.ui.view.home.manager
+package com.example.andnotes.ui.utility.manager
 
 import com.example.andnotes.BuildConfig
 import com.example.commons.utility.helper.DateUtils
