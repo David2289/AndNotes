@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_outlined_secondary"
-        android:padding="@dimen/commons_15dp">
+        android:paddingStart="@dimen/commons_15dp"
+        android:paddingTop="@dimen/commons_15dp"
+        android:paddingEnd="@dimen/commons_15dp"
+        android:paddingBottom="@dimen/commons_10dp">
 
         <TextView
             android:id="@+id/title"
@@ -27,17 +30,19 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/commons_10dp">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
                 android:id="@+id/desc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/Font.Regular.Body.Black"
+                style="@style/Font.Regular.Body.Gray"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ward"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingTop="@dimen/commons_10dp"
+                android:paddingBottom="@dimen/commons_10dp"
                 android:layout_marginEnd="@dimen/commons_10dp"
                 tools:text="Little description"
                 tools:maxLines="1"
@@ -45,11 +50,11 @@
 
             <ImageView
                 android:id="@+id/ward"
-                android:layout_width="@dimen/commons_30dp"
-                android:layout_height="@dimen/commons_25dp"
-                app:layout_constraintTop_toTopOf="@+id/desc"
+                android:layout_width="@dimen/commons_40dp"
+                android:layout_height="@dimen/commons_40dp"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:padding="@dimen/commons_05dp"
+                android:padding="12dp"
                 android:src="@drawable/ic_downward_black"
                 android:contentDescription="@null"/>
 

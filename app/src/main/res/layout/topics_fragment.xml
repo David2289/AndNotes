@@ -53,8 +53,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_animations"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_15dp"
-                app:title="@string/topics_item_permissions_title"
-                app:desc="@string/topics_item_permissions_desc"/>
+                app:title="@string/topics_item_photos_title"
+                app:desc="@string/topics_item_photos_desc"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

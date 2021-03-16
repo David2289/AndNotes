@@ -30,11 +30,13 @@
         making use of ValueAnimatorto graduate heights and constraints which is managed with ConstrainSet
         instead LayoutParams</string>
     <string name="topics_item_display_title">Display data</string>
-    <string name="topics_item_display_desc">Display a list of users called from https://reqres.in API REST.
+    <string name="topics_item_display_desc">Display a list of users called from ReqRes web page.in API REST.
         The communication is achieved with MVVM architecture using ViewModel and LiveData from Android Jetpack,
         Dagger2 as a dependency injector, Retrofit to fetch the data from de API REST and RxJava to subscribe the responses.</string>
-    <string name="topics_item_permissions_title">Permissions</string>
-    <string name="topics_item_permissions_desc">Permissions implementation to access to gallery, camera, location, etc. for Android API 23 and above.</string>
+    <string name="topics_item_photos_title">Photos</string>
+    <string name="topics_item_photos_desc">List of photos taken by camera or uploaded from gallery to show them inside a slider.
+        The topic is about to manage the permissions to access to gallery, camera, location, etc. for Android API 23 and above.
+        Furthermore the screen can manage the photos by CRUD function.</string>
 
     <string name="settings_item_theme">Theme</string>
     <string name="settings_item_walkthrough">Walkthrough</string>
