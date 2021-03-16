@@ -46,7 +46,7 @@
                 app:desc="@string/topics_item_animation_desc"/>
 
             <com.example.commons.ui.component.listitem.ListCardItemView
-                android:id="@+id/item_permissions"
+                android:id="@+id/item_photos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"

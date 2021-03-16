@@ -30,6 +30,13 @@ class TopicsFragment: Fragment() {
                 startActivity(intent)
             }
         }
+        binding.itemPhotos.setOnClickListener {
+            context?.let {
+                val intent = Intent(Intent.ACTION_VIEW)
+                    .setClassName(it, "com.example.photos.ui.activity.PhotosActivity")
+                startActivity(intent)
+            }
+        }
         return binding.root
     }
 

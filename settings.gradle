@@ -1,3 +1,4 @@
+include ':photos'
 include ':display'
 include ':commons'
 include ':app'
