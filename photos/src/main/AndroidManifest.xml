@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.photos">
 
+    <!-- To take photo from gallery -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- To take photo from Camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
     <application>
 
         <activity

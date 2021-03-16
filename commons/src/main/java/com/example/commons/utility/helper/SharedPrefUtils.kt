@@ -20,6 +20,11 @@ class SharedPrefUtils {
                 .getBoolean(key, false)
         }
 
+        fun getBooleanData(context: Context, key: String, default: Boolean): Boolean {
+            return context.getSharedPreferences(PREF_APP, Context.MODE_PRIVATE)
+                    .getBoolean(key, default)
+        }
+
         /**
          * Gets int data.
          *
