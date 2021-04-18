@@ -1,8 +1,11 @@
 package com.example.photos.ui.activity
 
 import android.Manifest
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.activity.result.ActivityResultLauncher
@@ -22,6 +25,12 @@ class PhotosActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val myVar: String
+        val secondVar: String? = null
+        myVar = secondVar ?: "Defualt value"
+
 
         photoPermResultLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
                 { result ->
@@ -54,12 +63,19 @@ class PhotosActivity: AppCompatActivity() {
         val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
+        // Broadcast Receiver
+        val receiver = object : BroadcastReceiver() {
+            override fun onReceive(p0: Context?, p1: Intent?) {
+                TODO("Not yet implemented")
+            }
+        }
+
         // Intent to open a system dialog chooser between camera or gallery:
-        val chooser = Intent.createChooser(galleryIntent, "Some text here")
+        val chooser = Intent.createChooser(galleryIntent, "Some text here", )
         chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
 
         // TODO correct deprecated
-        startActivityForResult(chooser, 200)
+        startActivity(chooser)
     }
 
 }

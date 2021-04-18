@@ -213,7 +213,7 @@
         <item name="android:textColor">?colorPrimary</item>
     </style>
 
-    <style name="Font.Regular.Body.Seoncary" parent="Font.Regular.Body">
+    <style name="Font.Regular.Body.Secondary" parent="Font.Regular.Body">
         <item name="android:textColor">?colorSecondary</item>
     </style>
 
