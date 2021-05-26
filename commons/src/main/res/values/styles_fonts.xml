@@ -108,7 +108,7 @@
     <!-- region ****** FONT THIN FOOTER (12sp) ****** -->
 
     <style name="Font.Thin.Footer" parent="Font.Thin">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="Font.Thin.Footer.Primary" parent="Font.Thin.Footer">
@@ -236,7 +236,7 @@
     <!-- region ****** FONT REGULAR FOOTER (12sp) ****** -->
 
     <style name="Font.Regular.Footer" parent="Font.Regular">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="Font.Regular.Footer.Primary" parent="Font.Regular.Footer">
@@ -364,7 +364,7 @@
     <!-- region ****** FONT MEDIUM FOOTER (12sp) ****** -->
 
     <style name="Font.Medium.Footer" parent="Font.Medium">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="Font.Medium.Footer.Primary" parent="Font.Medium.Footer">
@@ -492,7 +492,7 @@
     <!-- region ****** FONT BOLD FOOTER (12sp) ****** -->
 
     <style name="Font.Bold.Footer" parent="Font.Bold">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="Font.Bold.Footer.Primary" parent="Font.Bold.Footer">
@@ -620,7 +620,7 @@
     <!-- region ****** FONT ITALIC FOOTER (12sp) ****** -->
 
     <style name="Font.Italic.Footer" parent="Font.Italic">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="Font.Italic.Footer.Primary" parent="Font.Italic.Footer">

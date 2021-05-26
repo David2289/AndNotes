@@ -39,7 +39,7 @@
     </style>
 
     <style name="Button.Filled.Primary.Footer" parent="Button.Filled.Primary">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <!-- endregion -->
@@ -55,7 +55,7 @@
     </style>
 
     <style name="Button.Filled.Secondary.Footer" parent="Button.Filled.Secondary">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <!-- endregion -->
@@ -78,7 +78,7 @@
     </style>
 
     <style name="Button.Outlined.Primary.Footer" parent="Button.Outlined.Primary">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <!-- endregion -->
@@ -96,7 +96,7 @@
     </style>
 
     <style name="Button.Outlined.Secondary.Footer" parent="Button.Outlined.Secondary">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <!-- endregion -->

@@ -44,7 +44,7 @@
     <!-- region ****** TEXT BUTTON MEDIUM FOOTER ****** -->
 
     <style name="TextButton.Medium.Footer" parent="TextButton.Medium">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="TextButton.Medium.Footer.Primary" parent="TextButton.Medium.Footer">
@@ -103,7 +103,7 @@
     <!-- region ****** TEXT BUTTON BOLD FOOTER ****** -->
 
     <style name="TextButton.Bold.Footer" parent="TextButton.Bold">
-        <item name="android:textSize">@dimen/fontsize_footer</item>
+        <item name="android:textSize">@dimen/fontsize_caption</item>
     </style>
 
     <style name="TextButton.Bold.Footer.Primary" parent="TextButton.Bold.Footer">
