@@ -17,7 +17,7 @@
         <attr name="title"/>
         <attr name="subtitle"/>
         <attr name="image"/>
-        <attr name="icon"/>
+        <attr name="endicon" format="integer"/>
         <attr name="stroke_show" format="boolean"/>
     </declare-styleable>
 

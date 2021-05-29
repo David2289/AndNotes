@@ -1,17 +1,19 @@
 package com.example.photos.ui.activity
 
 import android.Manifest
+import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
+import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
 import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.utility.manager.PermissionManager
@@ -46,14 +48,29 @@ class PhotosActivity: AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
         binding.imageContent.setOnClickListener {
-            val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
-            PermissionManager.validate(
-                    activity = this,
-                    permissions = permissions,
-                    onPermGranted = { openPhotoChooser() },
-                    onPermDenied = { photoPermResultLauncher.launch(permissions) },
-                    onPermReqDisabled = {  }
+
+            val dialog = Dialog(this).setup(
+                    title = R.string.dialog_media_chooser_title,
+                    desc = R.string.dialog_media_chooser_desc,
+                    buttonMdl1 = ButtonModel(
+                            title = R.string.dialog_media_chooser_btn_camera,
+                            endIcon = R.drawable.ic_camera_black,
+                            onClick = {}),
+                    buttonMdl2 = ButtonModel(
+                            title = R.string.dialog_media_chooser_btn_gallery,
+                            endIcon = R.drawable.ic_folder_black,
+                            onClick = {})
             )
+            dialog.show()
+
+//            val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
+//            PermissionManager.validate(
+//                    activity = this,
+//                    permissions = permissions,
+//                    onPermGranted = { openPhotoChooser() },
+//                    onPermDenied = { photoPermResultLauncher.launch(permissions) },
+//                    onPermReqDisabled = {  }
+//            )
         }
         setContentView(binding.root)
     }

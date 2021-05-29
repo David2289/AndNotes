@@ -27,23 +27,27 @@ class ListStdItemView: ConstraintLayout {
         val title = typedArrayList.getString(R.styleable.ListStdItemView_title)
         val subtitle = typedArrayList.getString(R.styleable.ListStdItemView_subtitle)
         val image = typedArrayList.getInteger(R.styleable.ListStdItemView_image, 0)
-        val icon = typedArrayList.getInteger(R.styleable.ListStdItemView_icon, 0)
+        val endicon = typedArrayList.getResourceId(R.styleable.ListStdItemView_endicon, 0)
         val showStroke = typedArrayList.getBoolean(R.styleable.ListStdItemView_stroke_show, true);
 
-        configUI(title, subtitle, image, icon, showStroke)
+        configUI(title, subtitle, image, endicon, showStroke)
         typedArrayList.recycle()
     }
 
-    fun configUI(title: String?, subtitle: String?, @DrawableRes image: Int, @DrawableRes icon: Int, showStroke: Boolean) {
+    fun configUI(title: String?, subtitle: String?, @DrawableRes image: Int, @DrawableRes endicon: Int, showStroke: Boolean) {
         configTitle(title)
         configSubtitle(subtitle)
         configImage(image)
-        configEndIcon(icon)
+        configEndIcon(endicon)
         configStroke(showStroke)
     }
 
     fun configTitle(title: String?) {
         binding.title.text = title ?: ""
+    }
+
+    fun title(title: Int) {
+        binding.title.text = context.getString(title)
     }
 
     fun configSubtitle(subtitle: String?) {

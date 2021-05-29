@@ -3,4 +3,9 @@
 
     <string name="screen_photos_add">Add photo</string>
 
+    <string name="dialog_media_chooser_title">Photo chooser</string>
+    <string name="dialog_media_chooser_desc">Choose media to load a picture from Camera or Gallery</string>
+    <string name="dialog_media_chooser_btn_camera">Camera</string>
+    <string name="dialog_media_chooser_btn_gallery">Gallery</string>
+
 </resources>
