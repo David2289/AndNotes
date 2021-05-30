@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -19,6 +21,8 @@ import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
 import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.utility.manager.PermissionManager
+import java.io.FileNotFoundException
+import java.io.InputStream
 
 
 class PhotosActivity: AppCompatActivity() {
@@ -52,6 +56,21 @@ class PhotosActivity: AppCompatActivity() {
                 binding.imageContent.visibility = View.VISIBLE
                 binding.emptyContent.visibility = View.GONE
                 binding.picture.setImageURI(imageUri)
+
+//                var bitmap: Bitmap? = null
+//                try {
+//                    imageUri?.let {
+//                        val inputStream = contentResolver.openInputStream(it)
+//                        bitmap = BitmapFactory.decodeStream(inputStream)
+////                        String imageSource = ImageBitmapString.BitMapToString(bitmap)
+////                        imageSources.add(imageSource)
+//                    }
+//                }
+//                catch (e: FileNotFoundException) {
+//                    e.printStackTrace()
+//                }
+//
+//                bitmap?.let { binding.picture.setImageBitmap(it) }
             }
         }
 
