@@ -2,14 +2,13 @@ package com.example.photos.ui.activity
 
 import android.Manifest
 import android.app.Dialog
-import android.content.BroadcastReceiver
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +30,7 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var setScreenLauncher: ActivityResultLauncher<Intent>
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
+    var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +47,11 @@ class PhotosActivity: AppCompatActivity() {
 
                     }
                 }
-        takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) {  bitmap ->
-            bitmap?.let {
-
+        takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
+            if (taken) {
+                binding.imageContent.visibility = View.VISIBLE
+                binding.emptyContent.visibility = View.GONE
+                binding.picture.setImageURI(imageUri)
             }
         }
 
@@ -58,7 +60,7 @@ class PhotosActivity: AppCompatActivity() {
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
-        binding.imageContent.setOnClickListener {
+        binding.emptyContent.setOnClickListener {
             mediaDialog = Dialog(this).setup(
                     type = DialogType.EXPANDED_BUTTONS,
                     title = R.string.dialog_media_chooser_title,
@@ -112,8 +114,8 @@ class PhotosActivity: AppCompatActivity() {
         val values = ContentValues()
         values.put(MediaStore.Images.Media.TITLE, "New Picture")
         values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
-        val image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-        takePictureLauncher.launch(image_uri)
+        imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        takePictureLauncher.launch(imageUri)
     }
 
     private fun toSettings() {
