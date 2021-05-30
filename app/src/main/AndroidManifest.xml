@@ -12,7 +12,8 @@
 
         <activity
             android:name=".ui.view.splash.SplashActivity"
-            android:theme="@style/Theme.Green.NoActionBar">
+            android:theme="@style/Theme.Green.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,11 +22,13 @@
 
         <activity
             android:name=".ui.view.walkthrough.activity.WTActivity"
-            android:theme="@style/Theme.Green.NoActionBar"/>
+            android:theme="@style/Theme.Green.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.view.home.activity.HomeActivity"
-            android:theme="@style/Theme.Green.ActionBar">
+            android:theme="@style/Theme.Green.ActionBar"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

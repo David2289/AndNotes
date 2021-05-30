@@ -13,7 +13,8 @@
 
         <activity
             android:name=".ui.activity.PhotosActivity"
-            android:theme="@style/Theme.Purple.ActionBar"/>
+            android:theme="@style/Theme.Purple.ActionBar"
+            android:screenOrientation="portrait"/>
 
     </application>
 
