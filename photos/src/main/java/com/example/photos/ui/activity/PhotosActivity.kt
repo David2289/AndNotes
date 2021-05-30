@@ -3,15 +3,18 @@ package com.example.photos.ui.activity
 import android.Manifest
 import android.app.Dialog
 import android.content.BroadcastReceiver
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.commons.ui.component.enums.DialogType
 import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
 import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
@@ -22,77 +25,126 @@ import com.example.photos.utility.manager.PermissionManager
 class PhotosActivity: AppCompatActivity() {
 
     lateinit var binding: PhotosActivityBinding
-    lateinit var photoPermResultLauncher: ActivityResultLauncher<Array<out String>>
-    lateinit var photoChooserResultLauncher: ActivityResultLauncher<Uri>
+    lateinit var cameraPermLauncher: ActivityResultLauncher<String>
+    lateinit var galleryPermLauncher: ActivityResultLauncher<String>
+    lateinit var takePictureLauncher: ActivityResultLauncher<Uri>
+    lateinit var setScreenLauncher: ActivityResultLauncher<Intent>
+    lateinit var mediaDialog: Dialog
+    lateinit var setDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        val myVar: String
-        val secondVar: String? = null
-        myVar = secondVar ?: "Defualt value"
-
-
-        photoPermResultLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
-                { result ->
-                    if (result.get(Manifest.permission.CAMERA) == true && result.get(Manifest.permission.CAMERA) == true) {
-                        openPhotoChooser()
+        cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+                { isGranted: Boolean ->
+                    if (isGranted) {
+                        openCamera()
                     }
                 }
+        galleryPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+                { isGranted: Boolean ->
+                    if (isGranted) {
 
-        val photoChooserResultLauncher = registerForActivityResult(ActivityResultContracts.TakePicturePreview())
-                {
-
+                    }
                 }
+        takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) {  bitmap ->
+            bitmap?.let {
+
+            }
+        }
+
+        setScreenLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            print("Settings results")
+        }
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
         binding.imageContent.setOnClickListener {
-
-            val dialog = Dialog(this).setup(
+            mediaDialog = Dialog(this).setup(
+                    type = DialogType.EXPANDED_BUTTONS,
                     title = R.string.dialog_media_chooser_title,
                     desc = R.string.dialog_media_chooser_desc,
                     buttonMdl1 = ButtonModel(
                             title = R.string.dialog_media_chooser_btn_camera,
                             endIcon = R.drawable.ic_camera_black,
-                            onClick = {}),
+                            onClick = {
+                                validateCameraPerm()
+                                mediaDialog.dismiss()
+                            }),
                     buttonMdl2 = ButtonModel(
                             title = R.string.dialog_media_chooser_btn_gallery,
                             endIcon = R.drawable.ic_folder_black,
-                            onClick = {})
+                            onClick = {
+                                validateGalleryPerm()
+                                mediaDialog.dismiss()
+                            })
             )
-            dialog.show()
+            mediaDialog.show()
 
-//            val permissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE)
-//            PermissionManager.validate(
-//                    activity = this,
-//                    permissions = permissions,
-//                    onPermGranted = { openPhotoChooser() },
-//                    onPermDenied = { photoPermResultLauncher.launch(permissions) },
-//                    onPermReqDisabled = {  }
-//            )
         }
         setContentView(binding.root)
     }
 
-    private fun openPhotoChooser() {
-        // Without uri parameter the option is Google Drive:
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+    private fun validateCameraPerm() {
+        val permission = Manifest.permission.CAMERA
+        PermissionManager.validate(
+                activity = this,
+                permission = permission,
+                onPermNotGranted = { cameraPermLauncher.launch(permission) },
+                onPermGranted = { openCamera() },
+                onPermReqDisabled = { showCameraSettingDialog() }
+        )
+    }
 
-        // Broadcast Receiver
-        val receiver = object : BroadcastReceiver() {
-            override fun onReceive(p0: Context?, p1: Intent?) {
-                TODO("Not yet implemented")
-            }
-        }
+    private fun showCameraSettingDialog() {
+        setDialog = Dialog(this).setup(
+                type = DialogType.WRAPPED_BUTTONS,
+                title = R.string.dialog_set_camera_title,
+                desc = R.string.dialog_set_camera_desc,
+                buttonMdl1 = ButtonModel(
+                        title = R.string.dialog_set_camera_btn_title,
+                        onClick = { toSettings() }
+                )
+        )
+        setDialog.show()
+    }
 
-        // Intent to open a system dialog chooser between camera or gallery:
-        val chooser = Intent.createChooser(galleryIntent, "Some text here", )
-        chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
+    private fun openCamera() {
+        val values = ContentValues()
+        values.put(MediaStore.Images.Media.TITLE, "New Picture")
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
+        val image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        takePictureLauncher.launch(image_uri)
+    }
 
-        // TODO correct deprecated
-        startActivity(chooser)
+    private fun toSettings() {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        val uri = Uri.fromParts("package", packageName, null)
+        intent.data = uri
+        setScreenLauncher.launch(intent)
+    }
+
+    private fun validateGalleryPerm() {
+        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
+        PermissionManager.validate(
+                activity = this,
+                permission = permission,
+                onPermNotGranted = { galleryPermLauncher.launch(permission) },
+                onPermGranted = {  },
+                onPermReqDisabled = { showGallerySettingDialog() }
+        )
+    }
+
+    private fun showGallerySettingDialog() {
+        setDialog = Dialog(this).setup(
+                type = DialogType.WRAPPED_BUTTONS,
+                title = R.string.dialog_set_gallery_title,
+                desc = R.string.dialog_set_gallery_desc,
+                buttonMdl1 = ButtonModel(
+                        title = R.string.dialog_set_gallery_btn_title,
+                        onClick = {}
+                )
+        )
+        setDialog.show()
     }
 
 }

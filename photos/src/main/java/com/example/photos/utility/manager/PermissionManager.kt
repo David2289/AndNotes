@@ -1,10 +1,8 @@
 package com.example.photos.utility.manager
 
-import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.example.commons.utility.helper.SharedPrefUtils
 
@@ -16,9 +14,9 @@ class PermissionManager {
          * onPermReqDisabled: When user picked "no to ask again" to permission request.
          */
         fun validate(activity: Activity,
-                     permissions: Array<out String>,
+                     permission: String,
+                     onPermNotGranted: () -> Unit,
                      onPermGranted: () -> Unit,
-                     onPermDenied: () -> Unit,
                      onPermReqDisabled: () -> Unit
         ) {
 
@@ -27,39 +25,28 @@ class PermissionManager {
                 return
             }
 
-            val grantedList = ArrayList<String>()
-            val deniedList = ArrayList<String>()
-            val disabledList = ArrayList<String>()
-
-            for (permission in permissions) {
-                when(ContextCompat.checkSelfPermission(activity, permission)) {
-                    PackageManager.PERMISSION_DENIED -> {
-                        // shouldShowRequestPermissionRationale:
-                        // returns true if user has denied the permission.
-                        // return false in others cases (For example: First time requesting or user has choose "No to show again")
-                        // Android docs says to call the method inside PERMISSION_DENIED
-                        if (activity.shouldShowRequestPermissionRationale(permission)) {
-                            deniedList.add(permission)
+            when(ContextCompat.checkSelfPermission(activity, permission)) {
+                PackageManager.PERMISSION_DENIED -> {
+                    // shouldShowRequestPermissionRationale:
+                    // returns true if user has denied the permission.
+                    // return false in others cases (For example: First time requesting or user has choose "No to show again")
+                    // Android docs says to call the method inside PERMISSION_DENIED
+                    if (activity.shouldShowRequestPermissionRationale(permission)) {
+                        onPermNotGranted()
+                    } else {
+                        if (firstTimeReqPerm(activity, permission)) {
+                            saveNotFirstTimeReqPerm(activity, permission)
+                            onPermNotGranted()
                         } else {
-                            if (firstTimeReqPerm(activity, permission)) {
-                                deniedList.add(permission)
-                                saveNotFirstTimeReqPerm(activity, permission)
-                            } else {
-                                // If is not the first time asking permission this only can happens if user has choose "No to show again"
-                                disabledList.add(permission)
-                            }
+                            // If is not the first time asking permission this only can happens if user has choose "No to show again"
+                            onPermReqDisabled()
+
                         }
                     }
-                    PackageManager.PERMISSION_GRANTED -> grantedList.add(permission)
                 }
+                PackageManager.PERMISSION_GRANTED -> onPermGranted()
             }
 
-            // If every permission was granted:
-            when {
-                disabledList.size > 0 -> onPermReqDisabled()
-                grantedList.size == permissions.size -> onPermGranted()
-                else -> onPermDenied()
-            }
         }
 
         private fun firstTimeReqPerm(context: Context, permission: String): Boolean {
