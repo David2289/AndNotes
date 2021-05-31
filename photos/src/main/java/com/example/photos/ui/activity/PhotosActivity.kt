@@ -19,7 +19,10 @@ import com.example.commons.ui.component.enums.DialogType
 import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
 import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
+import com.example.photos.business.datasource.local.androom.dao.PictureDao
+import com.example.photos.business.datasource.local.androom.entity.PictureEntity
 import com.example.photos.databinding.PhotosActivityBinding
+import com.example.photos.ui.manager.PhotosManager
 import com.example.photos.utility.manager.PermissionManager
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -34,51 +37,25 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var setScreenLauncher: ActivityResultLauncher<Intent>
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
+    lateinit var pictureDao: PictureDao
     var imageUri: Uri? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-                { isGranted: Boolean ->
-                    if (isGranted) {
-                        openCamera()
-                    }
-                }
-        galleryPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-                { isGranted: Boolean ->
-                    if (isGranted) {
-
-                    }
-                }
-        takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
-            if (taken) {
-                binding.imageContent.visibility = View.VISIBLE
-                binding.emptyContent.visibility = View.GONE
-                binding.picture.setImageURI(imageUri)
-
-//                var bitmap: Bitmap? = null
-//                try {
-//                    imageUri?.let {
-//                        val inputStream = contentResolver.openInputStream(it)
-//                        bitmap = BitmapFactory.decodeStream(inputStream)
-////                        String imageSource = ImageBitmapString.BitMapToString(bitmap)
-////                        imageSources.add(imageSource)
-//                    }
-//                }
-//                catch (e: FileNotFoundException) {
-//                    e.printStackTrace()
-//                }
-//
-//                bitmap?.let { binding.picture.setImageBitmap(it) }
-            }
-        }
-
-        setScreenLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            print("Settings results")
-        }
-
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
+
+        pictureDao = PhotosManager.pictureDao(this)
+
+        val pictures = pictureDao.getPictures()
+        for (picture in pictures) {
+            val uri = Uri.parse(picture.pictureUri)
+            binding.imageContent.visibility = View.VISIBLE
+            binding.emptyContent.visibility = View.GONE
+            binding.picture.setImageURI(uri)
+        }
+
         binding.emptyContent.setOnClickListener {
             mediaDialog = Dialog(this).setup(
                     type = DialogType.EXPANDED_BUTTONS,
@@ -100,8 +77,35 @@ class PhotosActivity: AppCompatActivity() {
                             })
             )
             mediaDialog.show()
-
         }
+
+        cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+        { isGranted: Boolean ->
+            if (isGranted) {
+                openCamera()
+            }
+        }
+        galleryPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
+        { isGranted: Boolean ->
+            if (isGranted) {
+
+            }
+        }
+        takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
+            if (taken) {
+                binding.imageContent.visibility = View.VISIBLE
+                binding.emptyContent.visibility = View.GONE
+                binding.picture.setImageURI(imageUri)
+
+                val pictureEntity = PictureEntity(imageUri.toString())
+                pictureDao.insertPicture(pictureEntity)
+            }
+        }
+
+        setScreenLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            print("Settings results")
+        }
+
         setContentView(binding.root)
     }
 
