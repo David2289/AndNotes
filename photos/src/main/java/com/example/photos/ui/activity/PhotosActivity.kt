@@ -4,8 +4,6 @@ import android.Manifest
 import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -25,8 +23,6 @@ import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.ui.adapter.PhotosAdapter
 import com.example.photos.ui.manager.PhotosManager
 import com.example.photos.utility.manager.PermissionManager
-import java.io.FileNotFoundException
-import java.io.InputStream
 
 
 class PhotosActivity: AppCompatActivity() {
@@ -39,7 +35,8 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
     lateinit var pictureDao: PictureDao
-    lateinit var adapter: PhotosAdapter
+    var adapter: PhotosAdapter? = null
+    var photoList = ArrayList<PictureEntity>()
     var imageUri: Uri? = null
 
 
@@ -48,34 +45,7 @@ class PhotosActivity: AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
 
-        configPhotoUI()
-
-        binding.emptyContent.setOnClickListener {
-            val btnMdl1 = ButtonModel(
-                title = R.string.dialog_media_chooser_btn_camera,
-                endIcon = R.drawable.ic_camera_black,
-                onClick = {
-                    validateCameraPerm()
-                    mediaDialog.dismiss()
-                })
-
-            val btnMdl2 = ButtonModel(
-                title = R.string.dialog_media_chooser_btn_gallery,
-                endIcon = R.drawable.ic_folder_black,
-                onClick = {
-                    validateGalleryPerm()
-                    mediaDialog.dismiss()
-                })
-
-            mediaDialog = Dialog(this).setup(
-                    type = DialogType.EXPANDED_BUTTONS,
-                    title = R.string.dialog_media_chooser_title,
-                    desc = R.string.dialog_media_chooser_desc,
-                    buttonMdl1 = btnMdl1,
-                    buttonMdl2 = btnMdl2
-            )
-            mediaDialog.show()
-        }
+        configUI()
 
         cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
         { isGranted: Boolean ->
@@ -93,7 +63,7 @@ class PhotosActivity: AppCompatActivity() {
             if (taken) {
                 val pictureEntity = PictureEntity(imageUri.toString())
                 pictureDao.insertPicture(pictureEntity)
-                configPhotoUI()
+                configUI()
             }
         }
 
@@ -104,21 +74,71 @@ class PhotosActivity: AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    private fun configPhotoUI() {
+
+    private fun configUI() {
         pictureDao = PhotosManager.pictureDao(this)
         val pictureList = pictureDao.getPictures()
-        if (pictureList.isNotEmpty()) {
-            binding.photosContent.visibility = View.VISIBLE
-            binding.emptyContent.visibility = View.GONE
-            adapter = PhotosAdapter(ArrayList(pictureList))
+        if (pictureList.isEmpty()) {
+            configEmptyUI()
+        } else {
+            configPhotosUI(pictureList)
+        }
+    }
+
+
+    private fun configEmptyUI() {
+        binding.photosContent.visibility = View.GONE
+        binding.emptyContent.visibility = View.VISIBLE
+        binding.emptyContent.setOnClickListener { openMediaChooser() }
+    }
+
+
+    private fun configPhotosUI(pictureList: List<PictureEntity>) {
+        binding.photosContent.visibility = View.VISIBLE
+        binding.emptyContent.visibility = View.GONE
+        if (adapter == null) {
+            photoList.addAll(pictureList)
+            adapter = PhotosAdapter(photoList)
             binding.viewpager.adapter = adapter
             binding.dotsIndicator.setViewPager2(binding.viewpager)
-        } else {
-            binding.photosContent.visibility = View.GONE
-            binding.emptyContent.visibility = View.VISIBLE
         }
-
+        else {
+            photoList.clear()
+            photoList.addAll(pictureList)
+            adapter?.notifyDataSetChanged()
+        }
+        binding.addPhoto.setOnClickListener { openMediaChooser() }
+        binding.removePhoto.setOnClickListener {  }
     }
+
+
+    private fun openMediaChooser() {
+        val btnMdl1 = ButtonModel(
+            title = R.string.dialog_media_chooser_btn_camera,
+            endIcon = R.drawable.ic_camera_black,
+            onClick = {
+                validateCameraPerm()
+                mediaDialog.dismiss()
+            })
+
+        val btnMdl2 = ButtonModel(
+            title = R.string.dialog_media_chooser_btn_gallery,
+            endIcon = R.drawable.ic_folder_black,
+            onClick = {
+                validateGalleryPerm()
+                mediaDialog.dismiss()
+            })
+
+        mediaDialog = Dialog(this).setup(
+            type = DialogType.EXPANDED_BUTTONS,
+            title = R.string.dialog_media_chooser_title,
+            desc = R.string.dialog_media_chooser_desc,
+            buttonMdl1 = btnMdl1,
+            buttonMdl2 = btnMdl2
+        )
+        mediaDialog.show()
+    }
+
 
     private fun validateCameraPerm() {
         val permission = Manifest.permission.CAMERA
@@ -130,6 +150,7 @@ class PhotosActivity: AppCompatActivity() {
                 onPermReqDisabled = { showCameraSettingDialog() }
         )
     }
+
 
     private fun showCameraSettingDialog() {
         setDialog = Dialog(this).setup(
@@ -143,6 +164,7 @@ class PhotosActivity: AppCompatActivity() {
         )
         setDialog.show()
     }
+
 
     private fun openCamera() {
         val values = ContentValues()
