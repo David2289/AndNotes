@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/commons_20dp">
+        android:paddingTop="@dimen/commons_30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/empty_content"
@@ -29,34 +29,37 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/image_content"
-            android:layout_width="266dp"
-            android:layout_height="166dp"
+            android:id="@+id/photos_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:padding="3dp"
-            android:background="@drawable/bg_outlined_primary"
-            android:visibility="gone"
-            tools:visibility="visible">
+            android:visibility="gone">
 
-            <androidx.cardview.widget.CardView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:cardCornerRadius="4dp">
+                tools:listitem="@layout/item_photo"/>
 
-                <ImageView
-                    android:id="@+id/picture"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@null"
-                    android:scaleType="centerCrop"/>
-
-            </androidx.cardview.widget.CardView>
+            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewpager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:dotsColor="@color/dove_gray"
+                app:dotsStrokeColor="@color/alto"
+                app:dotsCornerRadius="@dimen/commons_05dp"
+                app:dotsSize="@dimen/commons_10dp"
+                app:dotsSpacing="@dimen/commons_05dp"
+                app:dotsStrokeWidth="2dp"
+                android:layout_marginTop="@dimen/commons_05dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

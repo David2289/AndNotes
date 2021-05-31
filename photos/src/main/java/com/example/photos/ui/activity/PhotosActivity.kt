@@ -22,6 +22,7 @@ import com.example.photos.R
 import com.example.photos.business.datasource.local.androom.dao.PictureDao
 import com.example.photos.business.datasource.local.androom.entity.PictureEntity
 import com.example.photos.databinding.PhotosActivityBinding
+import com.example.photos.ui.adapter.PhotosAdapter
 import com.example.photos.ui.manager.PhotosManager
 import com.example.photos.utility.manager.PermissionManager
 import java.io.FileNotFoundException
@@ -38,6 +39,7 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
     lateinit var pictureDao: PictureDao
+    lateinit var adapter: PhotosAdapter
     var imageUri: Uri? = null
 
 
@@ -46,35 +48,31 @@ class PhotosActivity: AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
 
-        pictureDao = PhotosManager.pictureDao(this)
-
-        val pictures = pictureDao.getPictures()
-        for (picture in pictures) {
-            val uri = Uri.parse(picture.pictureUri)
-            binding.imageContent.visibility = View.VISIBLE
-            binding.emptyContent.visibility = View.GONE
-            binding.picture.setImageURI(uri)
-        }
+        configPhotoUI()
 
         binding.emptyContent.setOnClickListener {
+            val btnMdl1 = ButtonModel(
+                title = R.string.dialog_media_chooser_btn_camera,
+                endIcon = R.drawable.ic_camera_black,
+                onClick = {
+                    validateCameraPerm()
+                    mediaDialog.dismiss()
+                })
+
+            val btnMdl2 = ButtonModel(
+                title = R.string.dialog_media_chooser_btn_gallery,
+                endIcon = R.drawable.ic_folder_black,
+                onClick = {
+                    validateGalleryPerm()
+                    mediaDialog.dismiss()
+                })
+
             mediaDialog = Dialog(this).setup(
                     type = DialogType.EXPANDED_BUTTONS,
                     title = R.string.dialog_media_chooser_title,
                     desc = R.string.dialog_media_chooser_desc,
-                    buttonMdl1 = ButtonModel(
-                            title = R.string.dialog_media_chooser_btn_camera,
-                            endIcon = R.drawable.ic_camera_black,
-                            onClick = {
-                                validateCameraPerm()
-                                mediaDialog.dismiss()
-                            }),
-                    buttonMdl2 = ButtonModel(
-                            title = R.string.dialog_media_chooser_btn_gallery,
-                            endIcon = R.drawable.ic_folder_black,
-                            onClick = {
-                                validateGalleryPerm()
-                                mediaDialog.dismiss()
-                            })
+                    buttonMdl1 = btnMdl1,
+                    buttonMdl2 = btnMdl2
             )
             mediaDialog.show()
         }
@@ -93,12 +91,9 @@ class PhotosActivity: AppCompatActivity() {
         }
         takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
             if (taken) {
-                binding.imageContent.visibility = View.VISIBLE
-                binding.emptyContent.visibility = View.GONE
-                binding.picture.setImageURI(imageUri)
-
                 val pictureEntity = PictureEntity(imageUri.toString())
                 pictureDao.insertPicture(pictureEntity)
+                configPhotoUI()
             }
         }
 
@@ -107,6 +102,22 @@ class PhotosActivity: AppCompatActivity() {
         }
 
         setContentView(binding.root)
+    }
+
+    private fun configPhotoUI() {
+        pictureDao = PhotosManager.pictureDao(this)
+        val pictureList = pictureDao.getPictures()
+        if (pictureList.isNotEmpty()) {
+            binding.photosContent.visibility = View.VISIBLE
+            binding.emptyContent.visibility = View.GONE
+            adapter = PhotosAdapter(ArrayList(pictureList))
+            binding.viewpager.adapter = adapter
+            binding.dotsIndicator.setViewPager2(binding.viewpager)
+        } else {
+            binding.photosContent.visibility = View.GONE
+            binding.emptyContent.visibility = View.VISIBLE
+        }
+
     }
 
     private fun validateCameraPerm() {
