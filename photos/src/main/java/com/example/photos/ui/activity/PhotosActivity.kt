@@ -13,6 +13,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.*
 import com.example.commons.ui.component.enums.DialogType
 import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
 import com.example.commons.ui.model.button.ButtonModel
@@ -38,6 +40,7 @@ class PhotosActivity: AppCompatActivity() {
     var adapter: PhotosAdapter? = null
     var photoList = ArrayList<PictureEntity>()
     var imageUri: Uri? = null
+    private var currentPage = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,6 +104,26 @@ class PhotosActivity: AppCompatActivity() {
             adapter = PhotosAdapter(photoList)
             binding.viewpager.adapter = adapter
             binding.dotsIndicator.setViewPager2(binding.viewpager)
+            binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    currentPage = position
+                }
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                    when(state) {
+                        SCROLL_STATE_IDLE -> {
+                            binding.addPhoto.isEnabled = true
+                            binding.removePhoto.isEnabled = true
+                        }
+                        SCROLL_STATE_DRAGGING -> {
+                            binding.addPhoto.isEnabled = false
+                            binding.removePhoto.isEnabled = false
+                        }
+                        SCROLL_STATE_SETTLING -> {}
+                    }
+                }
+            })
         }
         else {
             photoList.clear()
