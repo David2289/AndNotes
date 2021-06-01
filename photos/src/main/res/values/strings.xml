@@ -16,6 +16,9 @@
     <string name="dialog_set_gallery_desc">Gallery Permission is not granted. Go Settings to enable it.</string>
     <string name="dialog_set_gallery_btn_title">Go Settings</string>
 
+    <string name="dialog_remove_photo_title">Remove Picture</string>
+    <string name="dialog_remove_photo_desc">Are you sure you want to remove the picture?</string>
+
     <string name="screen_photos_btn_add_photo">Add photo</string>
     <string name="screen_photos_btn_remove_photo">Remove photo</string>
 

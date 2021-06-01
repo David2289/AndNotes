@@ -36,11 +36,12 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var setScreenLauncher: ActivityResultLauncher<Intent>
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
+    lateinit var removeDialog: Dialog
     lateinit var pictureDao: PictureDao
     var adapter: PhotosAdapter? = null
     var photoList = ArrayList<PictureEntity>()
     var imageUri: Uri? = null
-    private var currentPage = 0
+    private var currentPosition = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +66,7 @@ class PhotosActivity: AppCompatActivity() {
         takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
             if (taken) {
                 val pictureEntity = PictureEntity(imageUri.toString())
-                pictureDao.insertPicture(pictureEntity)
+                pictureDao.insert(pictureEntity)
                 configUI()
             }
         }
@@ -107,7 +108,7 @@ class PhotosActivity: AppCompatActivity() {
             binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    currentPage = position
+                    currentPosition = position
                 }
                 override fun onPageScrollStateChanged(state: Int) {
                     super.onPageScrollStateChanged(state)
@@ -131,7 +132,7 @@ class PhotosActivity: AppCompatActivity() {
             adapter?.notifyDataSetChanged()
         }
         binding.addPhoto.setOnClickListener { openMediaChooser() }
-        binding.removePhoto.setOnClickListener {  }
+        binding.removePhoto.setOnClickListener { openRemoveDialog() }
     }
 
 
@@ -163,6 +164,30 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
+    private fun openRemoveDialog() {
+        val btnMdl1 = ButtonModel(
+            title = R.string.commons_no,
+            onClick = { removeDialog.dismiss() }
+        )
+        val btnMdl2 = ButtonModel(
+            title = R.string.commons_yes,
+            onClick = {
+                pictureDao.delete(photoList[currentPosition])
+                removeDialog.dismiss()
+                configUI()
+            }
+        )
+        removeDialog = Dialog(this).setup(
+            type = DialogType.WRAPPED_BUTTONS,
+            title = R.string.dialog_remove_photo_title,
+            desc = R.string.dialog_remove_photo_desc,
+            buttonMdl1 = btnMdl1,
+            buttonMdl2 = btnMdl2
+        )
+        removeDialog.show()
+    }
+
+
     private fun validateCameraPerm() {
         val permission = Manifest.permission.CAMERA
         PermissionManager.validate(
@@ -176,14 +201,14 @@ class PhotosActivity: AppCompatActivity() {
 
 
     private fun showCameraSettingDialog() {
+        val btnMdl1 = ButtonModel(
+            title = R.string.dialog_set_camera_btn_title,
+            onClick = { toSettings() })
         setDialog = Dialog(this).setup(
                 type = DialogType.WRAPPED_BUTTONS,
                 title = R.string.dialog_set_camera_title,
                 desc = R.string.dialog_set_camera_desc,
-                buttonMdl1 = ButtonModel(
-                        title = R.string.dialog_set_camera_btn_title,
-                        onClick = { toSettings() }
-                )
+                buttonMdl1 = btnMdl1
         )
         setDialog.show()
     }

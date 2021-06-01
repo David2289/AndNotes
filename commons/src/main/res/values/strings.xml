@@ -3,5 +3,7 @@
 
     <string name="commons_continue">Continue</string>
     <string name="commons_next">Next</string>
+    <string name="commons_yes">Yes</string>
+    <string name="commons_no">No</string>
 
 </resources>

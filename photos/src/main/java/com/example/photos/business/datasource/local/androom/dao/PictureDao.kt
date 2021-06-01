@@ -1,6 +1,7 @@
 package com.example.photos.business.datasource.local.androom.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.photos.business.datasource.local.androom.entity.PictureEntity
@@ -12,6 +13,9 @@ interface PictureDao {
     fun getPictures(): List<PictureEntity>
 
     @Insert
-    fun insertPicture(picture: PictureEntity)
+    fun insert(picture: PictureEntity)
+
+    @Delete
+    fun delete(picture: PictureEntity)
 
 }
