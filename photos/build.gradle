@@ -25,6 +25,12 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.room:room-compiler:$room_verssion"
 
+    // DAGGER2
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
     // DOTS INDICATOR
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
