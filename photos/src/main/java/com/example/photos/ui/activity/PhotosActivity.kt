@@ -13,6 +13,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
 import com.example.commons.ui.component.enums.DialogType
@@ -24,11 +25,13 @@ import com.example.photos.business.datasource.local.androom.entity.PictureEntity
 import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.ui.adapter.PhotosAdapter
 import com.example.photos.ui.manager.PhotosManager
+import com.example.photos.ui.viewmodel.PhotosViewModel
 import com.example.photos.utility.manager.PermissionManager
 
 
 class PhotosActivity: AppCompatActivity() {
 
+    lateinit var viewModel: PhotosViewModel
     lateinit var binding: PhotosActivityBinding
     lateinit var cameraPermLauncher: ActivityResultLauncher<String>
     lateinit var galleryPermLauncher: ActivityResultLauncher<String>
@@ -47,6 +50,7 @@ class PhotosActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(PhotosViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
 
         configUI()
