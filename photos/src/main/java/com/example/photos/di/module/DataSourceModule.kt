@@ -26,8 +26,8 @@ class DataSourceModule {
     }
 
     @Provides
-    fun provideLocalDataSource(): PhotosLocalDataSource {
-        return PhotosLocalDataSource()
+    fun provideLocalDataSource(pictureDao: PictureDao): PhotosLocalDataSource {
+        return PhotosLocalDataSource(pictureDao)
     }
 
     @Provides

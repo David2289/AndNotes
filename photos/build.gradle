@@ -31,6 +31,10 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
+    // RXJAVA
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+    implementation "io.reactivex.rxjava3:rxjava:3.0.11-RC3"
+
     // DOTS INDICATOR
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 

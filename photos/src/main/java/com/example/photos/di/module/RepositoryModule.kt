@@ -1,5 +1,7 @@
 package com.example.photos.di.module
 
+import com.example.photos.business.datasource.local.PhotosLocalDataSource
+import com.example.photos.business.datasource.remote.PhotosRemoteDataSource
 import com.example.photos.business.repository.PhotosRepository
 import dagger.Module
 import dagger.Provides
@@ -8,8 +10,9 @@ import dagger.Provides
 class RepositoryModule {
 
     @Provides
-    fun provideRepositoryModule(): PhotosRepository {
-        return PhotosRepository()
+    fun provideRepositoryModule(photosRemoteDataSource: PhotosRemoteDataSource,
+                                photosLocalDataSource: PhotosLocalDataSource): PhotosRepository {
+        return PhotosRepository(photosRemoteDataSource, photosLocalDataSource)
     }
 
 }
