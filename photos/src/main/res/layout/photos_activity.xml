@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.photos.ui.viewmodel.PhotosViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +23,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/bg_dashed_primary">
+            android:background="@drawable/bg_dashed_primary"
+            android:visibility="@{viewModel.pictureList.empty ? View.VISIBLE : View.GONE}"
+            tools:visibility="visible">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,7 +45,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone">
+            android:visibility="@{viewModel.pictureList.empty ? View.GONE : View.VISIBLE}"
+            tools:visibility="gone">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager"

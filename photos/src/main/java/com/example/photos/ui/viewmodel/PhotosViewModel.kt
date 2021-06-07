@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class PhotosViewModel @Inject constructor(private val photosRepository: PhotosRepository): ViewModel() {
 
-    var userListLiveData: MutableLiveData<List<PictureEntity>> = MutableLiveData()
+    var pictureListLiveData: MutableLiveData<List<PictureEntity>> = MutableLiveData()
     var pictureList = ArrayList<PictureEntity>()
 
     fun getPictures() {
@@ -23,11 +23,19 @@ class PhotosViewModel @Inject constructor(private val photosRepository: PhotosRe
 
     private fun handleResponse(pictureList: List<PictureEntity>) {
         this.pictureList.addAll(pictureList)
-        userListLiveData.value = this.pictureList
+        pictureListLiveData.value = this.pictureList
     }
 
     private fun handleError(t: Throwable) {
         Log.w("RETROFIT", "HAS BEEN AN ERROR: " + t.message)
+    }
+
+    fun savePicture(pictureEntity: PictureEntity) {
+        photosRepository.savePicture(pictureEntity)
+    }
+
+    fun deletePicture(pictureEntity: PictureEntity) {
+        photosRepository.deletePicture(pictureEntity)
     }
 
 }

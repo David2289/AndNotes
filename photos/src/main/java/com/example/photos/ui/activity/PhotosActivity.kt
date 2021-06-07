@@ -11,8 +11,8 @@ import android.provider.Settings
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
@@ -20,17 +20,19 @@ import com.example.commons.ui.component.enums.DialogType
 import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
 import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
-import com.example.photos.business.datasource.local.androom.dao.PictureDao
 import com.example.photos.business.datasource.local.androom.entity.PictureEntity
 import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.ui.adapter.PhotosAdapter
-import com.example.photos.ui.manager.PhotosManager
 import com.example.photos.ui.viewmodel.PhotosViewModel
 import com.example.photos.utility.manager.PermissionManager
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
 
-class PhotosActivity: AppCompatActivity() {
+class PhotosActivity: DaggerAppCompatActivity() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: PhotosViewModel
     lateinit var binding: PhotosActivityBinding
     lateinit var cameraPermLauncher: ActivityResultLauncher<String>
@@ -40,7 +42,6 @@ class PhotosActivity: AppCompatActivity() {
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
     lateinit var removeDialog: Dialog
-    lateinit var pictureDao: PictureDao
     var adapter: PhotosAdapter? = null
     var photoList = ArrayList<PictureEntity>()
     var imageUri: Uri? = null
@@ -50,10 +51,14 @@ class PhotosActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(PhotosViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(PhotosViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
+        binding.viewModel = viewModel
 
-        configUI()
+        val observer = Observer<List<PictureEntity>> { result -> configUI(result) }
+        viewModel.pictureListLiveData.observe(this, observer)
+
+        viewModel.getPictures()
 
         cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
         { isGranted: Boolean ->
@@ -70,8 +75,8 @@ class PhotosActivity: AppCompatActivity() {
         takePictureLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { taken ->
             if (taken) {
                 val pictureEntity = PictureEntity(imageUri.toString())
-                pictureDao.insert(pictureEntity)
-                configUI()
+                viewModel.savePicture(pictureEntity)
+                viewModel.getPictures()
             }
         }
 
@@ -83,9 +88,7 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
-    private fun configUI() {
-        pictureDao = PhotosManager.pictureDao(this)
-        val pictureList = pictureDao.getPictures()
+    private fun configUI(pictureList: List<PictureEntity>) {
         if (pictureList.isEmpty()) {
             configEmptyUI()
         } else {
@@ -176,9 +179,9 @@ class PhotosActivity: AppCompatActivity() {
         val btnMdl2 = ButtonModel(
             title = R.string.commons_yes,
             onClick = {
-                pictureDao.delete(photoList[currentPosition])
+                viewModel.deletePicture(photoList[currentPosition])
+                viewModel.getPictures()
                 removeDialog.dismiss()
-                configUI()
             }
         )
         removeDialog = Dialog(this).setup(
