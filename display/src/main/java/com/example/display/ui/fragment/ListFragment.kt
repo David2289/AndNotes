@@ -26,7 +26,6 @@ class ListFragment : DaggerFragment() {
     private lateinit var viewModel: ListViewModel
     private lateinit var binding: ListFragmentBinding
     private lateinit var adapter: UsersAdapter
-    private lateinit var userList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,24 +39,23 @@ class ListFragment : DaggerFragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
         configUsersUI()
-        binding.loadingContent.loading.visibility = View.VISIBLE
-        viewModel.getUsers()
         return binding.root
     }
 
     private fun configUsersObserver() {
-        val observer = Observer<List<User>> { result ->
-            userList.clear()
-            userList.addAll(result)
+        val loadingObserver = Observer<Boolean> { result ->
+            binding.loadingContent.loading.visibility = if (result) View.VISIBLE else View.GONE
+        }
+        viewModel.isLoadingLiveData.observe(this, loadingObserver)
+        val listObserver = Observer<List<User>> {
             adapter.notifyDataSetChanged()
             binding.loadingContent.loading.visibility = View.GONE
         }
-        viewModel.userListLiveData.observe(this, observer)
+        viewModel.userListLiveData.observe(this, listObserver)
     }
 
     private fun configUsersUI() {
-        userList = ArrayList()
-        adapter = UsersAdapter(userList) { user ->
+        adapter = UsersAdapter(viewModel.userList) { user ->
             val bundle = bundleOf(Constants.BUNDLE_USER to user)
             Navigation.findNavController(binding.root).navigate(R.id.action_list_to_detail, bundle)
         }

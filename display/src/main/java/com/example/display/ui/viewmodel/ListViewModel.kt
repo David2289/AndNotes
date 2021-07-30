@@ -11,10 +11,16 @@ import javax.inject.Inject
 
 class ListViewModel @Inject constructor(private val usersRepository: UsersRepository) : ViewModel() {
 
+    var isLoadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var userListLiveData: MutableLiveData<List<User>> = MutableLiveData()
     var userList: ArrayList<User> = ArrayList()
 
-    fun getUsers() {
+    init {
+        getUsers()
+        isLoadingLiveData.value = true
+    }
+
+    private fun getUsers() {
         usersRepository.getUsers(1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
