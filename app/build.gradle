@@ -41,9 +41,6 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    // DOTS INDICATOR
-    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
-
     // LOTTIE
     implementation "com.airbnb.android:lottie:$lottie_version"
 

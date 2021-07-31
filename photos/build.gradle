@@ -35,9 +35,6 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
     implementation "io.reactivex.rxjava3:rxjava:3.0.11-RC3"
 
-    // DOTS INDICATOR
-    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
-
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
