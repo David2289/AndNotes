@@ -11,9 +11,9 @@ import android.provider.Settings
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
 import com.example.commons.ui.component.enums.DialogType
@@ -25,15 +25,12 @@ import com.example.photos.databinding.PhotosActivityBinding
 import com.example.photos.ui.adapter.PhotosAdapter
 import com.example.photos.ui.viewmodel.PhotosViewModel
 import com.example.photos.utility.manager.PermissionManager
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
+import org.koin.android.ext.android.get
 
 
-class PhotosActivity: DaggerAppCompatActivity() {
+class PhotosActivity: AppCompatActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var viewModel: PhotosViewModel
+    var viewModel = get<PhotosViewModel>()
     lateinit var binding: PhotosActivityBinding
     lateinit var cameraPermLauncher: ActivityResultLauncher<String>
     lateinit var galleryPermLauncher: ActivityResultLauncher<String>
@@ -51,7 +48,6 @@ class PhotosActivity: DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this, viewModelFactory).get(PhotosViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
         binding.viewModel = viewModel
 
