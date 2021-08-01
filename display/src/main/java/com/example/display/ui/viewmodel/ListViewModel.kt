@@ -7,9 +7,8 @@ import com.example.display.business.model.User
 import com.example.display.business.repository.UsersRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import javax.inject.Inject
 
-class ListViewModel @Inject constructor(private val usersRepository: UsersRepository) : ViewModel() {
+class ListViewModel constructor(private val usersRepository: UsersRepository) : ViewModel() {
 
     var isLoadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var userListLiveData: MutableLiveData<List<User>> = MutableLiveData()

@@ -7,9 +7,8 @@ import com.example.photos.business.datasource.local.androom.entity.PictureEntity
 import com.example.photos.business.repository.PhotosRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import javax.inject.Inject
 
-class PhotosViewModel @Inject constructor(private val photosRepository: PhotosRepository): ViewModel() {
+class PhotosViewModel constructor(private val photosRepository: PhotosRepository): ViewModel() {
 
     var pictureListLiveData: MutableLiveData<List<PictureEntity>> = MutableLiveData()
     var pictureList = ArrayList<PictureEntity>()
