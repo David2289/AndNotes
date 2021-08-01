@@ -6,9 +6,8 @@ import com.example.display.business.model.User
 import com.example.display.business.model.Users
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import javax.inject.Inject
 
-class UsersRepository @Inject constructor(private val remoteDataSource: UsersRemoteDataSource,
+class UsersRepository constructor(private val remoteDataSource: UsersRemoteDataSource,
                                           private val localDataSource: UsersLocalDataSource)  {
 
     fun getUsers(page: Int): Single<List<User>> {

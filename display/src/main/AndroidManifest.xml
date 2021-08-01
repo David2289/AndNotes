@@ -6,11 +6,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application
-        android:name=".DisplayApplication">
+    <application>
+
         <activity
             android:name=".ui.activity.DisplayActivity"
             android:theme="@style/Theme.Purple.ActionBar"/>
+
     </application>
 
 </manifest>
