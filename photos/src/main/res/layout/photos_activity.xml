@@ -6,9 +6,13 @@
 
     <data>
         <import type="android.view.View" />
+        <import type="android.app.Activity" />
         <variable
             name="viewModel"
             type="com.example.photos.ui.viewmodel.PhotosViewModel" />
+        <variable
+            name="activity"
+            type="com.example.photos.ui.activity.PhotosActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +28,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/bg_dashed_primary"
-            android:visibility="@{viewModel.pictureList.empty ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.pictures.size() > 0 ? View.GONE : View.VISIBLE}"
+            android:onClick="@{() -> activity.openMediaChooser()}"
             tools:visibility="visible">
 
             <TextView
@@ -45,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="@{viewModel.pictureList.empty ? View.GONE : View.VISIBLE}"
+            android:visibility="@{viewModel.pictures.size() > 0 ? View.VISIBLE : View.GONE}"
             tools:visibility="gone">
 
             <androidx.viewpager2.widget.ViewPager2
@@ -79,7 +84,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/dots_indicator"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_50dp"
-                android:text="@string/screen_photos_btn_add_photo"/>
+                android:text="@string/screen_photos_btn_add_photo"
+                android:onClick="@{() -> activity.openMediaChooser()}"/>
 
             <Button
                 android:id="@+id/remove_photo"
@@ -88,7 +94,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/add_photo"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/commons_20dp"
-                android:text="@string/screen_photos_btn_remove_photo"/>
+                android:text="@string/screen_photos_btn_remove_photo"
+                android:onClick="@{() -> activity.openRemoveDialog()}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -10,8 +10,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class PhotosViewModel constructor(private val photosRepository: PhotosRepository): ViewModel() {
 
-    var pictureListLiveData: MutableLiveData<List<PictureEntity>> = MutableLiveData()
-    var pictureList = ArrayList<PictureEntity>()
+    var pictures: MutableLiveData<ArrayList<PictureEntity>> = MutableLiveData()
 
     fun getPictures() {
         photosRepository.getPictureList()
@@ -21,8 +20,7 @@ class PhotosViewModel constructor(private val photosRepository: PhotosRepository
     }
 
     private fun handleResponse(pictureList: List<PictureEntity>) {
-        this.pictureList.addAll(pictureList)
-        pictureListLiveData.value = this.pictureList
+        pictures.value = ArrayList(pictureList)
     }
 
     private fun handleError(t: Throwable) {

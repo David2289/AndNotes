@@ -13,11 +13,12 @@ class PermissionManager {
         /**
          * onPermReqDisabled: When user picked "no to ask again" to permission request.
          */
-        fun validate(activity: Activity,
-                     permission: String,
-                     onPermNotGranted: () -> Unit,
-                     onPermGranted: () -> Unit,
-                     onPermReqDisabled: () -> Unit
+        fun check(activity: Activity,
+                  permission: String,
+                  onPermNone: () -> Unit,
+                  onPermDenied: () -> Unit,
+                  onPermGranted: () -> Unit,
+                  onPermReqDisabled: () -> Unit
         ) {
 
             if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.M) {
@@ -32,11 +33,11 @@ class PermissionManager {
                     // return false in others cases (For example: First time requesting or user has choose "No to show again")
                     // Android docs says to call the method inside PERMISSION_DENIED
                     if (activity.shouldShowRequestPermissionRationale(permission)) {
-                        onPermNotGranted()
+                        onPermDenied()
                     } else {
                         if (firstTimeReqPerm(activity, permission)) {
                             saveNotFirstTimeReqPerm(activity, permission)
-                            onPermNotGranted()
+                            onPermNone()
                         } else {
                             // If is not the first time asking permission this only can happens if user has choose "No to show again"
                             onPermReqDisabled()

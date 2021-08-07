@@ -5,6 +5,8 @@
 
     <!-- To take photo from gallery -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- To write photo to the gallery -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- To take photo from Camera -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />

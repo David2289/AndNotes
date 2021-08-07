@@ -33,14 +33,14 @@ class PhotosActivity: AppCompatActivity() {
     var viewModel = get<PhotosViewModel>()
     lateinit var binding: PhotosActivityBinding
     lateinit var cameraPermLauncher: ActivityResultLauncher<String>
-    lateinit var galleryPermLauncher: ActivityResultLauncher<String>
+    lateinit var galleryWritePermLauncher: ActivityResultLauncher<String>
+    lateinit var galleryReadPermLauncher: ActivityResultLauncher<String>
     lateinit var takePictureLauncher: ActivityResultLauncher<Uri>
     lateinit var setScreenLauncher: ActivityResultLauncher<Intent>
     lateinit var mediaDialog: Dialog
     lateinit var setDialog: Dialog
     lateinit var removeDialog: Dialog
     var adapter: PhotosAdapter? = null
-    var photoList = ArrayList<PictureEntity>()
     var imageUri: Uri? = null
     private var currentPosition = 0
 
@@ -50,20 +50,28 @@ class PhotosActivity: AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.photos_activity)
         binding.viewModel = viewModel
+        binding.activity = this
 
-        val observer = Observer<List<PictureEntity>> { result -> configUI(result) }
-        viewModel.pictureListLiveData.observe(this, observer)
+        val picturesObserver = Observer<ArrayList<PictureEntity>> { result -> configUI(result) }
+        viewModel.pictures.observe(this, picturesObserver)
 
         viewModel.getPictures()
 
-        cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-        { isGranted: Boolean ->
+        cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
-                openCamera()
+                galleryWritePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            } else {
+
             }
         }
-        galleryPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission())
-        { isGranted: Boolean ->
+        galleryWritePermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) {
+                openCamera()
+            } else {
+
+            }
+        }
+        galleryReadPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
 
             }
@@ -84,28 +92,18 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
-    private fun configUI(pictureList: List<PictureEntity>) {
-        if (pictureList.isEmpty()) {
-            configEmptyUI()
-        } else {
+    private fun configUI(pictureList: ArrayList<PictureEntity>) {
+        binding.photosContent.visibility = if (pictureList.isEmpty()) View.GONE else View.VISIBLE
+        binding.emptyContent.visibility = if (pictureList.isEmpty()) View.VISIBLE else View.GONE
+        if (pictureList.isNotEmpty()) {
             configPhotosUI(pictureList)
         }
     }
 
 
-    private fun configEmptyUI() {
-        binding.photosContent.visibility = View.GONE
-        binding.emptyContent.visibility = View.VISIBLE
-        binding.emptyContent.setOnClickListener { openMediaChooser() }
-    }
-
-
-    private fun configPhotosUI(pictureList: List<PictureEntity>) {
-        binding.photosContent.visibility = View.VISIBLE
-        binding.emptyContent.visibility = View.GONE
+    private fun configPhotosUI(pictureList: ArrayList<PictureEntity>) {
         if (adapter == null) {
-            photoList.addAll(pictureList)
-            adapter = PhotosAdapter(photoList)
+            adapter = PhotosAdapter(pictureList)
             binding.viewpager.adapter = adapter
             binding.dotsIndicator.setViewPager2(binding.viewpager)
             binding.viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -130,21 +128,19 @@ class PhotosActivity: AppCompatActivity() {
             })
         }
         else {
-            photoList.clear()
-            photoList.addAll(pictureList)
+            pictureList.clear()
+            pictureList.addAll(pictureList)
             adapter?.notifyDataSetChanged()
         }
-        binding.addPhoto.setOnClickListener { openMediaChooser() }
-        binding.removePhoto.setOnClickListener { openRemoveDialog() }
     }
 
 
-    private fun openMediaChooser() {
+    fun openMediaChooser() {
         val btnMdl1 = ButtonModel(
             title = R.string.dialog_media_chooser_btn_camera,
             endIcon = R.drawable.ic_camera_black,
             onClick = {
-                validateCameraPerm()
+                checkCameraPerm()
                 mediaDialog.dismiss()
             })
 
@@ -152,7 +148,7 @@ class PhotosActivity: AppCompatActivity() {
             title = R.string.dialog_media_chooser_btn_gallery,
             endIcon = R.drawable.ic_folder_black,
             onClick = {
-                validateGalleryPerm()
+                checkGalleryPerm()
                 mediaDialog.dismiss()
             })
 
@@ -167,7 +163,7 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
-    private fun openRemoveDialog() {
+    fun openRemoveDialog() {
         val btnMdl1 = ButtonModel(
             title = R.string.commons_no,
             onClick = { removeDialog.dismiss() }
@@ -175,9 +171,11 @@ class PhotosActivity: AppCompatActivity() {
         val btnMdl2 = ButtonModel(
             title = R.string.commons_yes,
             onClick = {
-                viewModel.deletePicture(photoList[currentPosition])
-                viewModel.getPictures()
-                removeDialog.dismiss()
+                viewModel.pictures.value?.let {
+                    removeDialog.dismiss()
+                    viewModel.deletePicture(it[currentPosition])
+                    viewModel.getPictures()
+                }
             }
         )
         removeDialog = Dialog(this).setup(
@@ -191,12 +189,13 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
-    private fun validateCameraPerm() {
+    private fun checkCameraPerm() {
         val permission = Manifest.permission.CAMERA
-        PermissionManager.validate(
+        PermissionManager.check(
                 activity = this,
                 permission = permission,
-                onPermNotGranted = { cameraPermLauncher.launch(permission) },
+                onPermNone = { cameraPermLauncher.launch(permission) },
+                onPermDenied = { cameraPermLauncher.launch(permission) },
                 onPermGranted = { openCamera() },
                 onPermReqDisabled = { showCameraSettingDialog() }
         )
@@ -232,12 +231,13 @@ class PhotosActivity: AppCompatActivity() {
         setScreenLauncher.launch(intent)
     }
 
-    private fun validateGalleryPerm() {
+    private fun checkGalleryPerm() {
         val permission = Manifest.permission.READ_EXTERNAL_STORAGE
-        PermissionManager.validate(
+        PermissionManager.check(
                 activity = this,
                 permission = permission,
-                onPermNotGranted = { galleryPermLauncher.launch(permission) },
+                onPermNone = { galleryReadPermLauncher.launch(permission) },
+                onPermDenied = { galleryReadPermLauncher.launch(permission) },
                 onPermGranted = {  },
                 onPermReqDisabled = { showGallerySettingDialog() }
         )
