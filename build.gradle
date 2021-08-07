@@ -23,12 +23,12 @@ subprojects {
         if (project.hasProperty('android')) {
 
             android {
-                compileSdkVersion 30
+                compileSdkVersion rootProject.ext.target_version
                 buildToolsVersion "30.0.2"
 
                 defaultConfig {
-                    minSdkVersion 21
-                    targetSdkVersion 30
+                    minSdkVersion rootProject.ext.minsdk_version
+                    targetSdkVersion rootProject.ext.target_version
                     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
                 }
 

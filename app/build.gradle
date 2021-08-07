@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.andnotes"
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.code_version
+        versionName rootProject.ext.name_version
     }
 
     buildTypes {
