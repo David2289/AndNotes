@@ -23,13 +23,7 @@ class DialogExtensions {
         ): Dialog {
             when (type) {
                 DialogType.NONE_BUTTONS -> {
-                    return setupForNoneButtonsType(
-                            title = title,
-                            desc = desc,
-                            buttonMdl1 = buttonMdl1,
-                            buttonMdl2 = buttonMdl2,
-                            buttonMdl3 = buttonMdl3
-                    )
+                    return setupForNoneButtonsType()
                 }
                 DialogType.EXPANDED_BUTTONS -> {
                     return setupForExpandedButtonsType(
@@ -51,17 +45,13 @@ class DialogExtensions {
             }
         }
 
-        fun Dialog.setupForNoneButtonsType(
-                title: Int = 0,
-                desc: Int = 0,
-                buttonMdl1: ButtonModel?,
-                buttonMdl2: ButtonModel? = null,
-                buttonMdl3: ButtonModel? = null
+        private fun Dialog.setupForNoneButtonsType(
+
         ): Dialog {
             return this
         }
 
-        fun Dialog.setupForExpandedButtonsType(
+        private fun Dialog.setupForExpandedButtonsType(
                 title: Int = 0,
                 desc: Int = 0,
                 buttonMdl1: ButtonModel?,
@@ -104,7 +94,7 @@ class DialogExtensions {
             return this
         }
 
-        fun Dialog.setupForWrappedButtonsType(
+        private fun Dialog.setupForWrappedButtonsType(
                 title: Int = 0,
                 desc: Int = 0,
                 buttonMdl1: ButtonModel?,
