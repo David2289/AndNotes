@@ -16,8 +16,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
-import com.example.commons.ui.component.enums.DialogType
-import com.example.commons.ui.component.extensions.DialogExtensions.Companion.setup
+import com.example.commons.ui.component.extensions.setupListButtons
+import com.example.commons.ui.component.extensions.setupOneButtons
+import com.example.commons.ui.component.extensions.setupTwoButtons
 import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
 import com.example.photos.business.datasource.local.androom.entity.PictureEntity
@@ -60,15 +61,11 @@ class PhotosActivity: AppCompatActivity() {
         cameraPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
                 galleryWritePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            } else {
-
             }
         }
         galleryWritePermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
                 openCamera()
-            } else {
-
             }
         }
         galleryReadPermLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -135,6 +132,8 @@ class PhotosActivity: AppCompatActivity() {
     }
 
 
+    // region DIALOGS
+
     fun openMediaChooser() {
         val btnMdl1 = ButtonModel(
             title = R.string.dialog_media_chooser_btn_camera,
@@ -148,12 +147,11 @@ class PhotosActivity: AppCompatActivity() {
             title = R.string.dialog_media_chooser_btn_gallery,
             endIcon = R.drawable.ic_folder_black,
             onClick = {
-                checkGalleryPerm()
+                checkGalleryReadPerm()
                 mediaDialog.dismiss()
             })
 
-        mediaDialog = Dialog(this).setup(
-            type = DialogType.EXPANDED_BUTTONS,
+        mediaDialog = Dialog(this).setupListButtons(
             title = R.string.dialog_media_chooser_title,
             desc = R.string.dialog_media_chooser_desc,
             buttonMdl1 = btnMdl1,
@@ -178,42 +176,85 @@ class PhotosActivity: AppCompatActivity() {
                 }
             }
         )
-        removeDialog = Dialog(this).setup(
-            type = DialogType.WRAPPED_BUTTONS,
+        removeDialog = Dialog(this).setupTwoButtons(
             title = R.string.dialog_remove_photo_title,
             desc = R.string.dialog_remove_photo_desc,
-            buttonMdl1 = btnMdl1,
-            buttonMdl2 = btnMdl2
+            btnModel1 = btnMdl1,
+            btnModel2 = btnMdl2
         )
         removeDialog.show()
     }
 
 
-    private fun checkCameraPerm() {
-        val permission = Manifest.permission.CAMERA
-        PermissionManager.check(
-                activity = this,
-                permission = permission,
-                onPermNone = { cameraPermLauncher.launch(permission) },
-                onPermDenied = { cameraPermLauncher.launch(permission) },
-                onPermGranted = { openCamera() },
-                onPermReqDisabled = { showCameraSettingDialog() }
-        )
-    }
-
-
     private fun showCameraSettingDialog() {
-        val btnMdl1 = ButtonModel(
+        val btnMdl = ButtonModel(
             title = R.string.dialog_set_camera_btn_title,
             onClick = { toSettings() })
-        setDialog = Dialog(this).setup(
-                type = DialogType.WRAPPED_BUTTONS,
-                title = R.string.dialog_set_camera_title,
-                desc = R.string.dialog_set_camera_desc,
-                buttonMdl1 = btnMdl1
+        setDialog = Dialog(this).setupOneButtons(
+            title = R.string.dialog_set_camera_title,
+            desc = R.string.dialog_set_camera_desc,
+            btnModel = btnMdl
         )
         setDialog.show()
     }
+
+
+    private fun showGallerySettingDialog() {
+        setDialog = Dialog(this).setupOneButtons(
+            title = R.string.dialog_set_gallery_title,
+            desc = R.string.dialog_set_gallery_desc,
+            btnModel = ButtonModel(
+                title = R.string.dialog_set_gallery_btn_title,
+                onClick = { toSettings() }
+            )
+        )
+        setDialog.show()
+    }
+
+    //endregion
+
+
+    // region CHECK PERMISSIONS
+
+    private fun checkCameraPerm() {
+        val permission = Manifest.permission.CAMERA
+        PermissionManager.check(
+            activity = this,
+            permission = permission,
+            onPermNone = { cameraPermLauncher.launch(permission) },
+            onPermDenied = { cameraPermLauncher.launch(permission) },
+            onPermGranted = { checkGalleryWritePerm() },
+            onPermReqDisabled = { showCameraSettingDialog() }
+        )
+    }
+
+
+    private fun checkGalleryWritePerm() {
+        val permission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+        PermissionManager.check(
+            activity = this,
+            permission = permission,
+            onPermNone = { galleryWritePermLauncher.launch(permission) },
+            onPermDenied = { galleryWritePermLauncher.launch(permission) },
+            onPermGranted = { openCamera() },
+            onPermReqDisabled = { showGallerySettingDialog() }
+        )
+    }
+
+
+    private fun checkGalleryReadPerm() {
+        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
+        PermissionManager.check(
+            activity = this,
+            permission = permission,
+            onPermNone = { galleryReadPermLauncher.launch(permission) },
+            onPermDenied = { galleryReadPermLauncher.launch(permission) },
+            onPermGranted = {  },
+            onPermReqDisabled = { showGallerySettingDialog() }
+        )
+    }
+
+    //endregion
 
 
     private fun openCamera() {
@@ -224,36 +265,12 @@ class PhotosActivity: AppCompatActivity() {
         takePictureLauncher.launch(imageUri)
     }
 
+
     private fun toSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         val uri = Uri.fromParts("package", packageName, null)
         intent.data = uri
         setScreenLauncher.launch(intent)
-    }
-
-    private fun checkGalleryPerm() {
-        val permission = Manifest.permission.READ_EXTERNAL_STORAGE
-        PermissionManager.check(
-                activity = this,
-                permission = permission,
-                onPermNone = { galleryReadPermLauncher.launch(permission) },
-                onPermDenied = { galleryReadPermLauncher.launch(permission) },
-                onPermGranted = {  },
-                onPermReqDisabled = { showGallerySettingDialog() }
-        )
-    }
-
-    private fun showGallerySettingDialog() {
-        setDialog = Dialog(this).setup(
-                type = DialogType.WRAPPED_BUTTONS,
-                title = R.string.dialog_set_gallery_title,
-                desc = R.string.dialog_set_gallery_desc,
-                buttonMdl1 = ButtonModel(
-                        title = R.string.dialog_set_gallery_btn_title,
-                        onClick = {}
-                )
-        )
-        setDialog.show()
     }
 
 }
