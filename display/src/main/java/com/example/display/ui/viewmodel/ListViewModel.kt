@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class ListViewModel constructor(private val usersRepository: UsersRepository) : ViewModel() {
 
     var isLoadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
-    var userListLiveData: MutableLiveData<List<User>> = MutableLiveData()
+    var users: MutableLiveData<ArrayList<User>> = MutableLiveData()
     var userList: ArrayList<User> = ArrayList()
 
     init {
@@ -37,7 +37,7 @@ class ListViewModel constructor(private val usersRepository: UsersRepository) : 
 
     private fun handleSecondListResponse(userList: List<User>) {
         this.userList.addAll(userList)
-        userListLiveData.value = this.userList
+        users.value = this.userList
     }
 
     private fun handleError(t: Throwable) {

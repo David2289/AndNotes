@@ -22,7 +22,7 @@ class ListFragment : Fragment() {
 
     private var viewModel = get<ListViewModel>()
     private lateinit var binding: ListFragmentBinding
-    private lateinit var adapter: UsersAdapter
+    private var adapter: UsersAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,6 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.list_fragment, container, false)
-        configUsersUI()
         return binding.root
     }
 
@@ -43,21 +42,27 @@ class ListFragment : Fragment() {
             binding.loadingContent.loading.visibility = if (result) View.VISIBLE else View.GONE
         }
         viewModel.isLoadingLiveData.observe(this, loadingObserver)
-        val listObserver = Observer<List<User>> {
-            adapter.notifyDataSetChanged()
+        val listObserver = Observer<ArrayList<User>> { userList ->
             binding.loadingContent.loading.visibility = View.GONE
+            configUsersUI(userList)
         }
-        viewModel.userListLiveData.observe(this, listObserver)
+        viewModel.users.observe(this, listObserver)
     }
 
-    private fun configUsersUI() {
-        adapter = UsersAdapter(viewModel.userList) { user ->
-            val bundle = bundleOf(Constants.BUNDLE_USER to user)
-            Navigation.findNavController(binding.root).navigate(R.id.action_list_to_detail, bundle)
+    private fun configUsersUI(userList: ArrayList<User>) {
+        if (adapter == null) {
+            adapter = UsersAdapter(userList) { user ->
+                val bundle = bundleOf(Constants.BUNDLE_USER to user)
+                Navigation.findNavController(binding.root).navigate(R.id.action_list_to_detail, bundle)
+            }
+            val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            binding.recyclerview.layoutManager = llm
+            binding.recyclerview.adapter = adapter
         }
-        val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerview.layoutManager = llm
-        binding.recyclerview.adapter = adapter
+        else {
+            adapter?.notifyDataSetChanged()
+        }
+
     }
 
 }
