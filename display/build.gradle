@@ -67,14 +67,4 @@ dependencies {
     // PICASSO
     implementation "com.squareup.picasso:picasso:2.71828"
 
-    // JUNIT
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-
-    // MOCKITO
-    testImplementation "org.mockito:mockito-core:$mockito_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
-
-    // ESPRESSO
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
