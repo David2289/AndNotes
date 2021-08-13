@@ -20,14 +20,4 @@ dependencies {
     api "io.insert-koin:koin-android:$koin_version"
     api "io.insert-koin:koin-android-viewmodel:$koin_version"
 
-    // JUNIT
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-
-    // MOCKITO - UNIT TESTING
-    testImplementation "org.mockito:mockito-core:$mockito_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
-
-    // ESPRESSO - UI TESTING
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
