@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,7 +13,6 @@ import com.example.display.R
 import com.example.display.business.model.User
 import com.example.display.databinding.ListFragmentBinding
 import com.example.display.ui.adapter.UsersAdapter
-import com.example.commons.utility.helper.Constants
 import com.example.display.ui.viewmodel.ListViewModel
 import org.koin.android.ext.android.get
 
@@ -52,8 +50,7 @@ class ListFragment : Fragment() {
     private fun configUsersUI(userList: ArrayList<User>) {
         if (adapter == null) {
             adapter = UsersAdapter(userList) { user ->
-                val bundle = bundleOf(Constants.BUNDLE_USER to user)
-                Navigation.findNavController(binding.root).navigate(R.id.action_list_to_detail, bundle)
+                Navigation.findNavController(binding.root).navigate(ListFragmentDirections.actionListToDetail(user))
             }
             val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             binding.recyclerview.layoutManager = llm

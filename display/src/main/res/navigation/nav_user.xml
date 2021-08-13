@@ -26,6 +26,14 @@
         android:id="@+id/detail"
         android:name="com.example.display.ui.fragment.DetailFragment"
         android:label="@string/screen_detail_title"
-        tools:layout="@layout/detail_fragment" />
+        tools:layout="@layout/detail_fragment" >
+
+        <argument
+            android:name="user"
+            app:argType="com.example.display.business.model.User"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+
+    </fragment>
 
 </navigation>

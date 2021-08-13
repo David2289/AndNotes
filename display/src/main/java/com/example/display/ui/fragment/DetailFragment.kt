@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.display.R
 import com.example.display.business.model.User
 import com.example.display.databinding.DetailFragmentBinding
-import com.example.commons.utility.helper.Constants
 import com.squareup.picasso.Picasso
 
 class DetailFragment: Fragment() {
 
     lateinit var binding: DetailFragmentBinding
     lateinit var user: User
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,7 +24,7 @@ class DetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.detail_fragment, container, false)
-        user = arguments?.getParcelable<User>(Constants.BUNDLE_USER) as User
+        user = args.user as User
         binding.user = user
         Picasso.get().load(user.avatar).into(binding.photo)
         return binding.root
