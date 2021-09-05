@@ -11,7 +11,6 @@ import com.example.display.business.datasource.local.androom.database.UserDataba
 import com.example.display.business.datasource.remote.UsersRemoteDataSource
 import com.example.display.business.repository.UsersRepository
 import com.example.display.ui.viewmodel.ListViewModel
-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -52,7 +51,6 @@ private fun retrofit(): Retrofit {
     return Retrofit.Builder()
         .baseUrl(BuildConfig.API_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .client(okHttp())
         .build()
 }

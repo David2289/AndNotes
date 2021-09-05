@@ -55,9 +55,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
 
-    // RXJAVA
-    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
-    implementation "io.reactivex.rxjava3:rxjava:3.0.11-RC3"
+    // COROUTINES
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
     // OKHTTP3 used as callback interceptor to log the responses
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'

@@ -22,8 +22,8 @@ class ListFragment : Fragment() {
     private lateinit var binding: ListFragmentBinding
     private var adapter: UsersAdapter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         configUsersObserver()
     }
 
@@ -48,18 +48,12 @@ class ListFragment : Fragment() {
     }
 
     private fun configUsersUI(userList: ArrayList<User>) {
-        if (adapter == null) {
-            adapter = UsersAdapter(userList) { user ->
-                Navigation.findNavController(binding.root).navigate(ListFragmentDirections.actionListToDetail(user))
-            }
-            val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding.recyclerview.layoutManager = llm
-            binding.recyclerview.adapter = adapter
+        adapter = UsersAdapter(userList) { user ->
+            Navigation.findNavController(binding.root).navigate(ListFragmentDirections.actionListToDetail(user))
         }
-        else {
-            adapter?.notifyDataSetChanged()
-        }
-
+        val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerview.layoutManager = llm
+        binding.recyclerview.adapter = adapter
     }
 
 }
