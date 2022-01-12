@@ -30,13 +30,13 @@ class ListViewModel constructor(private val usersRepository: UsersRepository) : 
         }
     }
 
-    private fun handleResponse(userList: Response<Users>) {
-        if (userList.isSuccessful && userList.body() != null) {
+    private fun handleResponse(response: Response<Users>) {
+        if (response.isSuccessful && response.body() != null) {
             this.userList.clear()
-            this.userList.addAll(userList.body()!!.data)
+            this.userList.addAll(response.body()!!.data)
             users.value = this.userList
         } else {
-            handleError(userList.errorBody().toString())
+            handleError(response.errorBody().toString())
         }
     }
 

@@ -16,9 +16,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.*
-import com.example.commons.ui.component.extensions.setupListButtons
-import com.example.commons.ui.component.extensions.setupOneButtons
-import com.example.commons.ui.component.extensions.setupTwoButtons
+import com.example.commons.utility.extensions.setupListButtons
+import com.example.commons.utility.extensions.setupOneButtons
+import com.example.commons.utility.extensions.setupTwoButtons
 import com.example.commons.ui.model.button.ButtonModel
 import com.example.photos.R
 import com.example.photos.business.datasource.local.androom.entity.PictureEntity
@@ -87,6 +87,22 @@ class PhotosActivity: AppCompatActivity() {
 
         setContentView(binding.root)
     }
+
+    //region TREAD EXCEPTION
+//    override fun onResume() {
+//        super.onResume()
+//        longDuration()
+//    }
+//
+//    private fun longDuration() {
+//        try {
+//            Thread.sleep(50000)
+//        } catch (e: InterruptedException) {
+//            print(e)
+//        }
+//        print("Thread: " + Thread.currentThread().name + " completed")
+//    }
+    //endregion
 
 
     private fun configUI(pictureList: ArrayList<PictureEntity>) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,6 +37,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/commons_30dp"
             android:text="@string/about_description"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            style="@style/Font.Regular.Body.Gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/commons_30dp"
+            tools:text="22/08/2021"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

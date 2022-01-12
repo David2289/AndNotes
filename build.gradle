@@ -48,12 +48,26 @@ subprojects {
             dependencies {
                 // JUNIT
                 testImplementation 'junit:junit:4.13.2'
-                androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-                // ESPRESSO - UI TESTING
-                androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+                // region ****** ANDROIDX TEST ******
+                // Core library
+                androidTestImplementation 'androidx.test:core:1.4.0'
+
                 // AndroidJUnitRunner and JUnit Rules
                 androidTestImplementation 'androidx.test:runner:1.4.0'
                 androidTestImplementation 'androidx.test:rules:1.4.0'
+
+                // Assertions
+                androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+                androidTestImplementation 'androidx.test.ext:truth:1.1.3'
+                androidTestImplementation 'com.google.truth:truth:0.42'
+
+                // ESPRESSO - UI TESTING
+                androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+                // endregion
+
 
                 // MOCKITO - UNIT TESTING
                 testImplementation "org.mockito:mockito-core:$mockito_version"

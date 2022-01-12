@@ -11,7 +11,7 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
 
     // JODA TIME
-    implementation "joda-time:joda-time:$joda_version"
+    api "joda-time:joda-time:$joda_version"
 
     // DOTS INDICATOR
     api 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'

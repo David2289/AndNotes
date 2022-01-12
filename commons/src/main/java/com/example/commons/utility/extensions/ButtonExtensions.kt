@@ -1,4 +1,4 @@
-package com.example.commons.ui.component.extensions
+package com.example.commons.utility.extensions
 
 import android.view.View
 import android.widget.Button

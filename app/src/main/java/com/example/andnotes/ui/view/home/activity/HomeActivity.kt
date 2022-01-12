@@ -33,4 +33,8 @@ class HomeActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
+
+    //TODO: Set menu icons from fragment. Each fragment have to set the next line onCreateView. And override OncreateOptionsMenu
+    //setHasOptionsMenu(true)
+
 }

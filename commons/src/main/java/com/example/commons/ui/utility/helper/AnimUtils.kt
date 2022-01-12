@@ -1,6 +1,7 @@
 package com.example.commons.ui.utility.helper
 
 import android.animation.ValueAnimator
+import android.view.View
 import android.widget.ImageView
 
 abstract class AnimUtils {
@@ -22,7 +23,7 @@ abstract class AnimUtils {
             animator.start()
         }
 
-        fun rotateAnim(imageView: ImageView) {
+        fun rotateAnim(imageView: View) {
             val animator = ValueAnimator.ofFloat(0f, 360f)
             animator.addUpdateListener { valAnimator ->
                 imageView.rotation = valAnimator.animatedValue as Float
